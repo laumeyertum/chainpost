@@ -1,0 +1,22 @@
+{
+  "name": "chainpost",
+  "version": "1.0.0",
+  "description": "blockchain term project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/laumeyertum/chainpost.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/laumeyertum/chainpost/issues"
+  },
+  "homepage": "https://github.com/laumeyertum/chainpost#readme",
+  "dependencies": {
+    "web3": "^1.2.4"
+  }
+}
