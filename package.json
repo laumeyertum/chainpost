@@ -1,22 +1,17 @@
 {
   "name": "chainpost",
-  "version": "1.0.0",
-  "description": "blockchain term project",
-  "main": "index.js",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./bin/www"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/laumeyertum/chainpost.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/laumeyertum/chainpost/issues"
-  },
-  "homepage": "https://github.com/laumeyertum/chainpost#readme",
   "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "ejs": "^2.7.4",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "morgan": "~1.9.1",
     "web3": "^1.2.4"
   }
 }
