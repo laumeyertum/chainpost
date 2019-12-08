@@ -7,39 +7,11 @@
     </head>
     <body>
         <% include partials/navigationBar.ejs %>
-        <div>
-            <div class="row shadow p-3 mb-5 bg-white rounded" style="width: 80%; margin-left: 50px;">
-                <div class="col-2">
-                    <h5>posted by user1</h5>
-                    <p>10/11/2019 at 10:11</p>
-                    <br>
-                    <h5>flagged by user2</h5>
-                    <p>10/11/2019 at 12:54</p>
-                </div>
-                <div class="col-6">
-                    <img src="images/Chainmail_helmet.png" style="max-width: 100%">
-                </div>
-                <div class="col-3">
-                    <div class="card text-center" style="width: 18rem;">
-                        <div style="height: 50%;"><img src="images/Chainmail_helmet.png" class="card-img-top"></div>
-                        <div style="height: 50%;">
-                            <p class="card-text">
-                                OC info
-
-                                Posted on 03/04/2019 at 22:10
-                                By user0
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-1">
-                    <div>
-                        <img src="/images/icons/circle-check.svg" style="height: 30%">
-                        <img src="/images/icons/circle-x.svg" style="height: 30%">
-                    </div>
-                </div>
-            </div>
-        </div>
+        <% /* %>
+        <% flaggedList.forEach(function(post){ %>
+            <%- include('partials/reported'); %>
+        <% }); %>
+        <% */ %>
     </body>
     <% include partials/script.ejs %>
 </html>
