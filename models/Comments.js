@@ -21,7 +21,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       references: {
         model: 'Posts',
-        key: 'postID'
+        key: 'postId'
       }
     },
     content: {

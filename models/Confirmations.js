@@ -1,23 +1,22 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('Likes', {
-    username: {
-      type: DataTypes.STRING(50),
-      allowNull: false,
-      primaryKey: true,
-      references: {
-        model: 'Users',
-        key: 'username'
-      }
-    },
+  return sequelize.define('Confirmations', {
     postId: {
       type: DataTypes.INTEGER(11),
       allowNull: false,
       primaryKey: true,
       references: {
-        model: 'Posts',
-        key: 'postId'
+        model: 'Prison',
+        key: 'originalPostId'
+      }
+    },
+    username: {
+      type: DataTypes.STRING(50),
+      allowNull: false,
+      references: {
+        model: 'Users',
+        key: 'username'
       }
     },
     type: {
@@ -33,6 +32,6 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     }
   }, {
-    tableName: 'Likes'
+    tableName: 'Confirmations'
   });
 };
