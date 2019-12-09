@@ -2,7 +2,7 @@
 
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('Prison', {
-    originalPostId: {
+    repostPostId: {
       type: DataTypes.INTEGER(11),
       allowNull: false,
       primaryKey: true,
@@ -11,7 +11,7 @@ module.exports = function(sequelize, DataTypes) {
         key: 'postId'
       }
     },
-    repostPostId: {
+    originalPostId: {
       type: DataTypes.INTEGER(11),
       allowNull: false,
       references: {
@@ -19,9 +19,9 @@ module.exports = function(sequelize, DataTypes) {
         key: 'postId'
       }
     },
-    flaggerUsername: {
+    flagger: {
       type: DataTypes.STRING(50),
-      allowNull: true,
+      allowNull: false,
       references: {
         model: 'Users',
         key: 'username'
@@ -29,11 +29,11 @@ module.exports = function(sequelize, DataTypes) {
     },
     createdAt: {
       type: DataTypes.DATE,
-      allowNull: true
+      allowNull: false
     },
     updatedAt: {
       type: DataTypes.DATE,
-      allowNull: true
+      allowNull: false
     }
   }, {
     tableName: 'Prison'

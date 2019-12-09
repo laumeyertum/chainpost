@@ -5,11 +5,7 @@ module.exports = function(sequelize, DataTypes) {
     postId: {
       type: DataTypes.INTEGER(11),
       allowNull: false,
-      primaryKey: true,
-      references: {
-        model: 'Prison',
-        key: 'originalPostId'
-      }
+      primaryKey: true
     },
     username: {
       type: DataTypes.STRING(50),
