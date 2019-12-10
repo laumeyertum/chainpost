@@ -8,6 +8,7 @@ function createReport(_originalPostId, _repostPostId, _username) {
     repostPostId: _repostPostId,
     originalPostId: _originalPostId,
     username: _username,
+    likeCount: 0,
     createdAt: new Date(),
     updatedAt: new Date()
   });
@@ -16,6 +17,8 @@ function createReport(_originalPostId, _repostPostId, _username) {
 async function reportExist(_repostPostId) {
   return await Prison.findByPk(_repostPostId) != null;
 }
+
+
 
 module.exports = {
   createReport,

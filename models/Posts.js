@@ -28,6 +28,11 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.TEXT,
       allowNull: false
     },
+    likeCount: {
+      type: DataTypes.INTEGER(11),
+      allowNull: false,
+      defaultValue: '0'
+    },
     createdAt: {
       type: DataTypes.DATE,
       allowNull: false
