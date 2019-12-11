@@ -1,6 +1,6 @@
 const Sequelize  = require('./../utilities/sequelize');
 const sequelize = Sequelize.sequelize;
-const post = require("post");
+const post = require("./post");
 
 const Like = sequelize.import("../models/Likes.js");
 
@@ -14,6 +14,8 @@ function createLike(_postId, _username, _type) {
     updatedAt: new Date()
   });
 }
+
+console.log(post);
 
 module.exports = {
   createLike

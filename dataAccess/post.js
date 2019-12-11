@@ -8,6 +8,7 @@ function createPost(_username, _title,_type, _postContent) {
     username: _username,
     title: _title,
     type: _type,
+    likeCount: 0,
     postContent: _postContent,
     createdAt: new Date(),
     updatedAt: new Date()
@@ -37,14 +38,17 @@ function getNewPost(){
   });
 }
 
-function getTopPost(){}
+function getPostById(_postId) {
+  return Post.findByPk(_postId);
+}
 
-addLike(1, false);
+function getTopPost(){}
 
 module.exports = {
   createPost,
   postExist,
   addLike,
   getNewPost,
-  getTopPost
+  getTopPost,
+  getPostById
 };

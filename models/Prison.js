@@ -27,6 +27,10 @@ module.exports = function(sequelize, DataTypes) {
         key: 'username'
       }
     },
+    confirmations: {
+      type: DataTypes.INTEGER(11),
+      allowNull: false
+    },
     createdAt: {
       type: DataTypes.DATE,
       allowNull: false
