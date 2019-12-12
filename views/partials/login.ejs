@@ -1,14 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Login</title>
-    <% include head.ejs %>
-</head>
-<body>
-<form>
-    <input type="image" src="/images/icons/person.svg" data-toggle="modal" data-target="#loginPopup" class="btn-light" height="38px" />
-</form>
+<a data-toggle="modal" href="#loginPopup"><img src="/images/icons/person.svg" height="38px"></a>
+
 <div class="modal fade right" id="loginPopup" tabindex="-1" role="dialog"
      aria-labelledby="makeLoginPreviewLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-full-height modal-right" role="document">
@@ -20,6 +11,7 @@
                 </button>
             </div>
             <div class="modal-body">
+<!--                Username-->
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="username">Username</span>
@@ -35,8 +27,6 @@
                     <input type="password" class="form-control" placeholder="password"
                            aria-label="password" aria-describedby="basic-addon2" id="passphrase">
                 </div>
-                <!--                Sender form-->
-
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -46,6 +36,4 @@
         </div>
     </div>
 </div>
-</body>
-<% include script.ejs %>
-</html>
+
