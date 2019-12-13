@@ -7,11 +7,26 @@
 </head>
 <body>
     <% include partials/navigationBar.ejs %>
-    <h1>Hello</h1>
-    <h2>hi</h2>
+    <div>
+        <div class="row shadow p-3 mb-5 bg-white rounded" style="width: 80%; margin-left: 50px; margin-top: 10px;">
+            <h2>Create a new post</h2>
+            <form style="width: 100%">
+                <div class="form-group">
+                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Title">
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Text (optional)"></textarea>
+                </div>
+                <div class="form-group" align="right" style="margin-bottom: 0px;">
+                    <a href="#"><img src="/images/icons/paperclip.svg" aligh="middle" style="height: 24px; margin-right: 10px; filter: invert(62%) sepia(7%) saturate(9%) hue-rotate(322deg) brightness(91%) contrast(86%);"></a>
+                    <button type="submit" onclick="" class="btn btn-primary mb-2">Post</button>
+                </div>
+            </form>
+        </div>
+    </div>
     <% /* %>
     <% postList.forEach(function(post){ %>
-        <%- include('partials/post'); %>
+    <%- include('partials/post'); %>
     <% }); %>
     <% */ %>
 </body>
