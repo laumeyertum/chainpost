@@ -16,8 +16,8 @@ async function createPost(_username, _title,_type, _postContent) {
   return createdPost;
 }
 
-function addLike(_postId, _type) {
-  return post.addLike(_postId, _type);
+function addLike(_postId, _username, _type) {
+  return post.addLike(_postId, _username, _type);
 }
 
 function createComment(_username, _postId, _content) {
