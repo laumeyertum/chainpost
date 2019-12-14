@@ -98,7 +98,7 @@ contract MemeCoin is Context, IERC20 {
     }
 
     /**
-     * @dev Atomically decreases the allowance granted to `spender` by the caller.
+     * @dev Automatically decreases the allowance granted to `spender` by the caller.
      *
      * This is an alternative to {approve} that can be used as a mitigation for
      * problems described in {IERC20-approve}.

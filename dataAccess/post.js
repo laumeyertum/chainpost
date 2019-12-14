@@ -2,8 +2,9 @@ const Sequelize  = require('./../utilities/sequelize');
 const sequelize = Sequelize.sequelize;
 
 const Post = sequelize.import("../models/Posts.js");
+const Like = require("./like");
 
-function createPost(_username, _title,_type, _postContent) {
+function createPost(_username, _title, _type, _postContent) {
   return Post.create({
     username: _username,
     title: _title,
@@ -15,7 +16,7 @@ function createPost(_username, _title,_type, _postContent) {
   });
 }
 
-async function addLike(_postId, _type){
+async function addLike(_postId, _username, _type){
   if(await postExist(_postId)) {
     let i;
     if (_type) {
@@ -25,6 +26,7 @@ async function addLike(_postId, _type){
     }
     sequelize.query("UPDATE Posts SET likeCount = likeCount +" + i + " WHERE postId = " + _postId);
   }
+  Like.createLike(_postId,_username, _type);
 }
 
 async function postExist(_postId){
@@ -42,7 +44,12 @@ function getPostById(_postId) {
   return Post.findByPk(_postId);
 }
 
-function getTopPost(){}
+function getTopPost(){
+  return  Post.findAll({
+    limit: 20,
+    order: [['likeCount', 'DESC']]
+  });
+}
 
 module.exports = {
   createPost,
