@@ -1,7 +1,6 @@
 const Sequelize  = require('./../utilities/sequelize');
 const sequelize = Sequelize.sequelize;
 const post = require("./post");
-
 const Like = sequelize.import("../models/Likes.js");
 
 function createLike(_postId, _username, _type) {
@@ -15,8 +14,11 @@ function createLike(_postId, _username, _type) {
   });
 }
 
-console.log(post);
+function getLikesByUsername(_username){
+  return Like.findAll({where:{username:_username}});
+}
 
 module.exports = {
-  createLike
+  createLike,
+  getLikesByUsername
 };

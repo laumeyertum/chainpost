@@ -1,4 +1,6 @@
-const user = require("../dataAccess/user");
+const user = require("./../dataAccess/user");
+const post = require("./../dataAccess/post");
+const like = require("./../dataAccess/like");
 
 async function register(_username, _address, _password) {
   if(await user.userExist(_username)){
@@ -18,6 +20,14 @@ async function login(_username, _password){
     return null;
   }
   return user.getUserByUsername(_username);
+}
+
+function getPostsByUsername(_username){
+  return post.getPostsByUsername(_username);
+}
+
+function getLikesByUsername(_username){
+  return like.getLikesByUsername(_username);
 }
 
 module.exports = {

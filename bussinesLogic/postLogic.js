@@ -16,8 +16,12 @@ async function createPost(_username, _title,_type, _postContent) {
   return createdPost;
 }
 
-function addLike(_postId, _username, _type) {
-  return post.addLike(_postId, _username, _type);
+async function addLike(_postId, _username, _type) {
+  if(await post.postExist(_postId)) {
+    return post.addLike(_postId, _username, _type);
+  } else {
+    return null;
+  }
 }
 
 function createComment(_username, _postId, _content) {

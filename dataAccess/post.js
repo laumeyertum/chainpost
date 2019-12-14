@@ -51,11 +51,16 @@ function getTopPost(){
   });
 }
 
+function getPostsByUsername(_username){
+  return Post.findAll({where:{username: _username}});
+}
+
 module.exports = {
   createPost,
   postExist,
   addLike,
   getNewPost,
   getTopPost,
-  getPostById
+  getPostById,
+  getPostsByUsername
 };
