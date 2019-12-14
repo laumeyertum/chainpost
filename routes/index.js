@@ -16,7 +16,7 @@ router.post('/', async function (req, res, next) {
   let type = req.body.type;
   let content = req.body.content;
   let post  =  await postLogic.createPost(username, title, type, content);
-  res.redirect('/');
+  res.send(post);
 });
 
 module.exports = router;
