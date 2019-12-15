@@ -1,5 +1,5 @@
 function updownvote(buttonobj, updown) {
-  let postID = buttonobj.parentElement.previousSibling.val();
+  let postID = buttonobj.parentElement.previousSibling.previousSibling.innerHTML;
   // let username = localStorage.getItem('username');
   //TODO change to real username
   let username = "test1";
