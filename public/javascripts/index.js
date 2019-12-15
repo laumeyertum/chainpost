@@ -1,7 +1,3 @@
-function getBase64 (file,callback) {
-    const reader = new FileReader();
-    reader.addEventListener('load', () => callback(reader.result));
-    reader.readAsDataURL(file);
 let base64;
 
 function changeInputField() {
@@ -32,8 +28,6 @@ function encodeImageFileAsURL() {
     }
 }
 
-getBase64(fileObjectFromInput, function(base64Data){
-    console.log("base 64 of file is",base64Data);//here you can have your code which uses base64 for its operation,//file to base64 by oneshubh
 $('.postForm').on('submit', function () {
     let title = $('#postTitle').val();
     let username = localStorage.getItem("username");
@@ -83,6 +77,6 @@ $(document).ready(async function (e) {
             }
         });
     }));
-});});
+});
 
  */
