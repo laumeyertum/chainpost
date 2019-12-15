@@ -16,6 +16,10 @@ contract MemeCoin is Context, IERC20 {
 
     uint256 private _totalSupply;
 
+    constructor(uint totalSupply){
+        _totalSupply =totalSupply;
+    }
+
     /**
      * @dev See {IERC20-totalSupply}.
      */

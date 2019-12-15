@@ -1,5 +1,5 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 const postLogic = require("../bussinesLogic/postLogic");
 
 /* GET home page. */
@@ -17,6 +17,14 @@ router.post('/', async function (req, res, next) {
   let content = req.body.content;
   let post  =  await postLogic.createPost(username, title, type, content);
   res.send(post);
+});
+
+router.post('/upDownVote', function(req, res, next) {
+  let username = req.body.username;
+  let postId = req.body.postId;
+  let type = req.body.type;
+  postLogic.addLike(username, postId, type);
+//  TODO maybe send back success for colour change on website
 });
 
 module.exports = router;
