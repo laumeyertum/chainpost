@@ -5,8 +5,6 @@
             <input value="<%-post.get("postId")%>" id="postID" hidden>
             <div style="position:absolute; bottom: 0;">
                 <p><%-post.get("likeCount")%></p>
-                <a href="#"><img src="/images/icons/arrow-top.svg" style="height: 38px; filter: invert(19%) sepia(92%) saturate(6727%) hue-rotate(128deg) brightness(98%) contrast(103%);"></a>
-                <a href="#"><img src="/images/icons/arrow-bottom.svg" style="height: 38px; filter: invert(23%) sepia(93%) saturate(7396%) hue-rotate(358deg) brightness(104%) contrast(114%);"></a>
                 <a onclick="updownvote(this, true)"><img src="/images/icons/arrow-top.svg" style="height: 38px; filter: invert(19%) sepia(92%) saturate(6727%) hue-rotate(128deg) brightness(98%) contrast(103%);"></a>
                 <a onclick="updownvote(this, false)"><img src="/images/icons/arrow-bottom.svg" style="height: 38px; filter: invert(23%) sepia(93%) saturate(7396%) hue-rotate(358deg) brightness(104%) contrast(114%);"></a>
             </div>
@@ -18,5 +16,5 @@
             <a href="#"><img src="/images/icons/ellipses.svg" align="right" style="height: 16px; -webkit-transform: rotate(90deg); -moz-transform: rotate(90deg); -ms-transform: rotate(90deg); -o-transform: rotate(90deg); transform: rotate(90deg);"></a>
         </div>
     </div>
-</div></div>
+</div>
 <script src="./javascripts/updownvote.js"></script>
