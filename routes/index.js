@@ -23,7 +23,7 @@ router.post('/upDownVote', function(req, res, next) {
   let username = req.body.username;
   let postId = req.body.postId;
   let type = req.body.type;
-  postLogic.addLike(username, postId, type);
+  postLogic.addLike(postId, username, type);
 //  TODO maybe send back success for colour change on website
 });
 

@@ -18,6 +18,7 @@ function createPost(_username, _title, _type, _postContent) {
 
 async function addLike(_postId, _username, _type){
   if(await postExist(_postId)) {
+    Like.createLike(_postId,_username, _type);
     let i;
     if (_type) {
       i = 1;
@@ -26,7 +27,7 @@ async function addLike(_postId, _username, _type){
     }
     sequelize.query("UPDATE Posts SET likeCount = likeCount +" + i + " WHERE postId = " + _postId);
   }
-  Like.createLike(_postId,_username, _type);
+
 }
 
 async function postExist(_postId){

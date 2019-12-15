@@ -1,5 +1,6 @@
 function updownvote(buttonobj, updown) {
-  let postID = buttonobj.parentElement.previousSibling.val();
+  let postID = buttonobj.parentElement.previousElementSibling.valueOf().value;
+  console.log(postID);
   // let username = localStorage.getItem('username');
   //TODO change to real username
   let username = "test1";
@@ -16,8 +17,8 @@ function updownvote(buttonobj, updown) {
     type: 'POST',
     url: "/upDownVote",
     data: like,
+    dataType: 'json',
     success: changeColor(updown),
-    dataType: dataType,
   });
 }
 
