@@ -35,13 +35,10 @@
         </form>
     </div>
 </div>
-<% /* %>
-<% postList.forEach(function(post){ %>
-<%- include('partials/post'); %>
+<% postList.forEach(function(post) { %>
+    <%- include('partials/post', {post: post}); %>
 <% }); %>
-<% */ %>
 </body>
 <% include partials/script.ejs %>
-<script src="./javascript/index.js"></script>
 <script src="./javascripts/index.js"></script>
 </html>
