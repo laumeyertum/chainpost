@@ -2,7 +2,7 @@
     <div class="row shadow p-3 mb-5 bg-white rounded" style="width: 80%; margin-left: 50px; margin-top: 10px;">
         <div class="col-2">
             <h3 style="word-wrap: break-word;"><%-post.get("title")%></h3>
-            <input value="<%-post.get("postId")%>" id="postID" hidden>
+            <div id="postID" hidden><%-post.get("postId")%></div>
             <div style="position:absolute; bottom: 0;">
                 <p><%-post.get("likeCount")%></p>
                 <a onclick="updownvote(this, true)"><img src="/images/icons/arrow-top.svg" style="height: 38px; filter: invert(19%) sepia(92%) saturate(6727%) hue-rotate(128deg) brightness(98%) contrast(103%);"></a>
