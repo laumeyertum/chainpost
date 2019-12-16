@@ -3,7 +3,7 @@ const sequelize = Sequelize.sequelize;
 const post = require("./post");
 const Like = sequelize.import("../models/Likes.js");
 
-function createLike(_postId, _username, _type) {
+function createLike(_username, _postId, _type) {
   return Like.create({
     username: _username,
     postId: _postId,
@@ -17,7 +17,12 @@ function getLikesByUsername(_username){
   return Like.findAll({where:{username:_username}});
 }
 
+async function likeExist(_username, _postId){
+  return (await Like.findOne({where:{username:_username, postId: _postId}})) != null;
+}
+
 module.exports = {
   createLike,
-  getLikesByUsername
+  getLikesByUsername,
+  likeExist
 };
