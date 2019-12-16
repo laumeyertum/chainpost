@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const postLogic = require("../bussinesLogic/postLogic");
+const prisonLogic = require("../bussinesLogic/prisonLogic");
 
 /* GET home page. */
 router.get('/', async function(req, res, next) {
@@ -27,8 +28,12 @@ router.post('/upDownVote', async function(req, res, next) {
   return await postLogic.addLike(postId, username, type);
 });
 
-router.post('/registerForm', function(req, res, next){
-  res.send("hello");
+router.post('/report', async function(req, res, next){
+  let originalPostId = req.body.originalPostId;
+  let repostPostId = req.body.repostPostId;
+  let username = req.body.username;
+  let report  =  await prisonLogic.reportPost(repostPostId,originalPostId,username);
+  res.send(report);
 });
 
 module.exports = router;
