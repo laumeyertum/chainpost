@@ -20,12 +20,11 @@ router.post('/posting', async function (req, res, next) {
   res.send(post);
 });
 
-router.post('/upDownVote', function(req, res, next) {
+router.post('/upDownVote', async function(req, res, next) {
   let username = req.body.username;
   let postId = req.body.postId;
   let type = req.body.type;
-  postLogic.addLike(postId, username, type);
-//  TODO maybe send back success for colour change on website
+  return await postLogic.addLike(postId, username, type);
 });
 
 module.exports = router;

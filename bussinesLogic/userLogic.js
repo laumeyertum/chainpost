@@ -30,7 +30,19 @@ function getLikesByUsername(_username){
   return like.getLikesByUsername(_username);
 }
 
+function usernameExist(_username){
+  return user.userExist(_username);
+}
+
+function addressExist(_address){
+  return user.addressExist(_address);
+}
+
 module.exports = {
   register,
-  login
+  login,
+  getPostsByUsername,
+  getLikesByUsername,
+  usernameExist,
+  addressExist
 };
