@@ -26,4 +26,8 @@ router.post('/upDownVote', async function(req, res, next) {
   return await postLogic.addLike(postId, username, type);
 });
 
+router.post('/registerForm', function(req, res, next){
+  res.send("hello");
+});
+
 module.exports = router;
