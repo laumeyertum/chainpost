@@ -1,5 +1,5 @@
 function updownvote(buttonobj, updown) {
-  let postID = buttonobj.parentElement.previousElementSibling.valueOf().value;
+  let postID = buttonobj.parentElement.parentElement.firstChild.nextSibling.nextSibling.nextSibling.innerHTML;
   console.log(postID);
   // let username = localStorage.getItem('username');
   //TODO change to real username
@@ -10,7 +10,7 @@ function updownvote(buttonobj, updown) {
       {
         username: username,
         postId: postID,
-        type: updown,
+        type: updown
       };
 
   $.ajax({

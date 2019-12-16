@@ -28,7 +28,7 @@ function encodeImageFileAsURL() {
     }
 }
 
-$('.postForm').on('submit', function () {
+function postpost() {
     let title = $('#postTitle').val();
     let username = localStorage.getItem("username");
     if (username && title && (document.getElementById("postText").value.length > 0 || document.getElementById("upload").val())) {
@@ -44,11 +44,29 @@ $('.postForm').on('submit', function () {
             return;
         }
         base64 = null;
-        return [title, content, type, username];
+        //return [title, content, type, username];
+
+        let post =
+            {
+                username: username,
+                title: title,
+                type: updown,
+                content: content
+            };
+        console.log("here");
+        $.ajax({
+            type: 'POST',
+            url: "/posting",
+            data: post,
+            dataType: 'json',
+            success: function (){
+                //location.reload();
+                }
+        });
     } else {
         $("loginPopup").show();
     }
-});
+}
 
 
 /*
