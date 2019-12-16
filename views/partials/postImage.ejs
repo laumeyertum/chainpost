@@ -1,0 +1,20 @@
+<div>
+    <div class="row shadow p-3 mb-5 bg-white rounded" style="width: 80%; margin-left: 50px; margin-top: 10px;">
+        <div class="col-11">
+            <h3 style="word-wrap: break-word;"><%-post.get("title")%></h3>
+            <div id="postID"><%-post.get("postId")%></div>
+            <div>
+                <img src="<%- data:image/png; base64, post.get("postContent") %>" style="max-width: 100%; width: 50%; max-height: 100%; margin-bottom: 20px;">
+            </div>
+            <div class="row">
+                <p style="margin-top: 8px; margin-bottom: 8px;"><%-post.get("likeCount")%></p>
+                <a onclick="updownvote(this, true)"><img src="/images/icons/arrow-top.svg" style="height: 38px; filter: invert(19%) sepia(92%) saturate(6727%) hue-rotate(128deg) brightness(98%) contrast(103%);"></a>
+                <a onclick="updownvote(this, false)"><img src="/images/icons/arrow-bottom.svg" style="height: 38px; filter: invert(23%) sepia(93%) saturate(7396%) hue-rotate(358deg) brightness(104%) contrast(114%);"></a>
+            </div>
+        </div>
+        <div class="col-1" style="width: 40px">
+            <% include report.ejs %>
+        </div>
+    </div>
+</div>
+<script src="./javascripts/updownvote.js"></script>
