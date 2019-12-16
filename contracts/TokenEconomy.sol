@@ -13,6 +13,7 @@ contract TokenEconomy is Ownable{
     IERC20 private _token;
     uint private _rate;
     address payable private _wallet;
+    uint private _likeWorth = 10;
 
     constructor(address _tokenAddress,address wallet,  uint rate) public {
         require(rate > 0, "TokenEconomy: rate is 0");
@@ -44,8 +45,6 @@ contract TokenEconomy is Ownable{
         _processPurchase(beneficiary, tokens);
 
         _updatePurchasingState(beneficiary, weiAmount);
-
-        _forwardFunds();
     }
 
     function _getTokenAmount(uint256 weiAmount) internal view returns (uint256) {
@@ -56,15 +55,27 @@ contract TokenEconomy is Ownable{
         _token.safeTransfer(beneficiary, tokenAmount);
     }
 
-    function _forwardFunds() internal {
+    function _forwardFunds() external onlyOwner {
         _wallet.transfer(msg.value);
     }
 
-    function giveLike(address to){}
+    function giveLike(address to){
+        return _token.safeTransferFrom(msg.sender, to, _likeWorth);
+    }
+
+    function getLikeWorth() external view returns(uint){
+        return _likeWorth;
+    }
+
+    function setLikeWorth(uint likeWorth) external onlyOwner{
+        _likeWorth = likeWorth;
+    }
 
     function giveDislike(uint postId){}
 
-    function giveGift(address to, uint amount ){}
+    function giveGift(address to, uint amount ){
+        return _token.safeTransferFrom(msg.sender, to, amount);
+    }
 
     function rewardForReporting(uint postId, address payable[] reporter){}
 }

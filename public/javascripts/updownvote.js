@@ -23,5 +23,5 @@ function updownvote(buttonobj, updown) {
 }
 
 function changeColor(updown) {
-//  chage colour of button on success
+//  change colour of button on success
 }
