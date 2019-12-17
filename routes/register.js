@@ -16,7 +16,7 @@ router.post('/registerForm', function(req, res, next){
     console.log(address);
     let pwd = req.body.psw;
     user.register(username, address, pwd);
-    res.redirect('./../index');
+    res.redirect('./../');
 });
 
 module.exports = router;

@@ -15,6 +15,14 @@ contract TokenEconomy is Ownable{
     address payable private _wallet;
     uint private _likeWorth = 10;
 
+    struct Like{
+        uint postId;
+        address poster;
+        bool type;
+    }
+
+    Like[] likeList;
+
     constructor(address _tokenAddress,address wallet,  uint rate) public {
         require(rate > 0, "TokenEconomy: rate is 0");
         require(wallet != address(0), "TokenEconomy: wallet is the zero address");
@@ -59,8 +67,9 @@ contract TokenEconomy is Ownable{
         _wallet.transfer(msg.value);
     }
 
-    function giveLike(address to){
-        return _token.safeTransferFrom(msg.sender, to, _likeWorth);
+    function giveLike(address to, uint postId){
+        like = Like(msg.sender, owner(), postId, true);
+        likeList.push(Like(postId,to, true));
     }
 
     function getLikeWorth() external view returns(uint){
@@ -71,11 +80,27 @@ contract TokenEconomy is Ownable{
         _likeWorth = likeWorth;
     }
 
-    function giveDislike(uint postId){}
+    function giveDislike(address to, uint postId)external{
+        like = Like(msg.sender, owner(), postId, true);
+        likeList.push(Like(postId,to, false));
+    }
 
     function giveGift(address to, uint amount ){
         return _token.safeTransferFrom(msg.sender, to, amount);
     }
 
-    function rewardForReporting(uint postId, address payable[] reporter){}
+    function rewardForLikes(uint[] memory postId,address[] reporter, address [][] confirmer ){
+        for (uint i=0; i<likeList.length; i++) {
+            for (uint i=0; i<postId.length; i++) {
+                if(likeList[i].postId == postId[i]){
+
+                }
+            }
+            if(likeList[i].type){
+                _token.safeTransferFrom(owner(),likeList[i].poster,_likeWorth);
+            }
+        }
+    }
+
+     function _reportExist()
 }

@@ -2,7 +2,7 @@ const Sequelize  = require('./../utilities/sequelize');
 const sequelize = Sequelize.sequelize;
 const prison  = require('./prison');
 
-const Confirmation = sequelize.import("../models/Confirmation.js");
+const Confirmation = sequelize.import("../models/Confirmations.js");
 
 function createConfirmation(_postId, _username, _type) {
   prison.addConfirmation(_postId,_type);
