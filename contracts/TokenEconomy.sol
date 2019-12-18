@@ -15,13 +15,6 @@ contract TokenEconomy is Ownable {
     address payable private _wallet;
     uint private _likeWorth = 10;
 
-    struct Like {
-        uint postId;
-        address poster;
-        bool type;
-    }
-
-    Like[] private likeList;
     uint[] private postLikeList;
     mapping (uint => PostLike) private likeMapping;
 
@@ -78,11 +71,6 @@ contract TokenEconomy is Ownable {
     }
 
     function giveLike(address to, uint postId){
-        like = Like(msg.sender, owner(), postId, true);
-        likeList.push(Like(postId, to, true));
-    }
-
-    function giveLike(address to, uint postId){
         _token.safeTransferFrom(msg.sender, owner(), _likeWorth);
         if(likeMapping[postId].postId == 0){
             PostLike(postId,to,1,0);
@@ -101,11 +89,6 @@ contract TokenEconomy is Ownable {
     }
 
     function giveDislike(address to, uint postId) external {
-        like = Like(msg.sender, owner(), postId, true);
-        likeList.push(Like(postId, to, false));
-    }
-
-    function giveDislike(address to, uint postId) external {
         _token.safeTransferFrom(msg.sender, owner(), _likeWorth);
         if(likeMapping[postId].postId == 0){
             PostLike(postId,to,0,1);
@@ -119,30 +102,31 @@ contract TokenEconomy is Ownable {
         return _token.safeTransferFrom(msg.sender, to, amount);
     }
 
-    function rewardForLikes(uint[] memory postId, address[] reporter, address [][] confirmer){
-        for (uint i = 0; i < likeList.length; i++) {
-            if (!_reportExist(likeList[i], postId, reporter, confirmer)) {
-                if (likeList[i].type) {
-                    _token.safeTransferFrom(owner(), likeList[i].poster, _likeWorth);
-                }
-            }
-        }
-    }
-
-    function _reportExist(Like like, uint[] memory postId, address[] reporter, address [][] confirmer) internal returns (bool){
+    function _reportExist(PostLike like, uint[] memory postId,address[] originalPoster, address[] reporter, address [][] confirmer) internal returns (bool){
         for (uint i = 0; i < postId.length; i++) {
             if (like.postId == postId[i]) {
-
+                _token.safeTransferFrom(owner(),originalPoster[i] , _likeWorth.mul(postLikeList[i].amountLike));
+                uint amountToDistribute = like.amountDisLike.mul(_likeWorth);
+                uint amountReporter = amountToDistribute.div(2);
+                amountToDistribute = amountToDistribute.sub(amountReporter);
+                uint amountConfirmer = amountToDistribute.div(confirmer[i].length);
+                amountToDistribute = amountToDistribute.sub(amountConfirmer.mul(confirmer[i].length));
+                _token.safeTransferFrom(owner(), reporter[i], amountReporter);
+                for(uint j = 0; j< confirmer[i].length; j++){
+                    _token.safeTransferFrom(owner(), confirmer[i][j],amountConfirmer);
+                }
+                _token.safeTransferFrom(owner(), address (this), amountToDistribute);
             }
         }
         return false;
     }
 
-    function rewardForLikes(uint[] memory postId, address[] reporter, address [][] confirmer){
+    function rewardForLikes(uint[] memory postId,address[] originalPoster, address[] reporter, address [][] confirmer) external {
         for (uint i = 0; i < postLikeList.length; i++) {
-            if (!_reportExist(postLikeList[i], postId, reporter, confirmer)) {
+            if (!_reportExist(postLikeList[i],originalPoster, postId, reporter, confirmer)) {
                 if (postLikeList[i].type) {
-                    _token.safeTransferFrom(owner(), postLikeList[i].poster, _likeWorth);
+                    _token.safeTransferFrom(owner(), postLikeList[i].poster, _likeWorth*postLikeList[i].amountLike);
+                    _token.safeTransferFrom(owner(), address (this), _likeWorth*postLikeList[i].amountDisLike);
                 }
             }
         }
