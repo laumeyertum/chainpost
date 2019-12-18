@@ -47,16 +47,6 @@ contract TokenEconomy is Ownable {
         // silence state mutability warning without generating bytecode - see https://github.com/ethereum/solidity/issues/2691
     }
 
-    function buyMemeCoin(address beneficiary) public payable {
-        uint256 weiAmount = msg.value;
-        _preValidatePurchase(beneficiary, weiAmount);
-
-        // calculate token amount to be created
-        uint256 tokens = _getTokenAmount(weiAmount);
-
-        _processPurchase(beneficiary, tokens);
-    }
-
     function _getTokenAmount(uint256 weiAmount) internal view returns (uint256) {
         return weiAmount.mul(_rate);
     }
@@ -67,6 +57,35 @@ contract TokenEconomy is Ownable {
 
     function _forwardFunds() internal onlyOwner {
         _wallet.transfer(msg.value);
+    }
+
+    function _reportExist(PostLike memory like, uint[] memory postId,address[] memory originalPoster, address[] memory reporter, address [][] memory confirmer) internal returns (bool){
+        for (uint i = 0; i < postId.length; i++) {
+            if (like.postId == postId[i]) {
+                _token.safeTransferFrom(owner(),originalPoster[i] , _likeWorth.mul(like.amountLike));
+                uint amountToDistribute = like.amountDisLike.mul(_likeWorth);
+                uint amountReporter = amountToDistribute.div(2);
+                amountToDistribute = amountToDistribute.sub(amountReporter);
+                uint amountConfirmer = amountToDistribute.div(confirmer[i].length);
+                amountToDistribute = amountToDistribute.sub(amountConfirmer.mul(confirmer[i].length));
+                _token.safeTransferFrom(owner(), reporter[i], amountReporter);
+                for(uint j = 0; j< confirmer[i].length; j++){
+                    _token.safeTransferFrom(owner(), confirmer[i][j],amountConfirmer);
+                }
+                _token.safeTransferFrom(owner(), address (this), amountToDistribute);
+            }
+        }
+        return false;
+    }
+
+    function buyMemeCoin(address beneficiary) public payable {
+        uint256 weiAmount = msg.value;
+        _preValidatePurchase(beneficiary, weiAmount);
+
+        // calculate token amount to be created
+        uint256 tokens = _getTokenAmount(weiAmount);
+
+        _processPurchase(beneficiary, tokens);
     }
 
     function giveLike(address to, uint postId) external{
@@ -87,7 +106,7 @@ contract TokenEconomy is Ownable {
         _likeWorth = likeWorth;
     }
 
-    function giveDislike(address to, uint postId) external {
+    function giveDisLike(address to, uint postId) external {
         _token.safeTransferFrom(msg.sender, owner(), _likeWorth);
         if(likeMapping[postId].postId == 0){
             PostLike(postId,to,0,1);
@@ -99,25 +118,6 @@ contract TokenEconomy is Ownable {
 
     function giveGift(address to, uint amount) external{
         return _token.safeTransferFrom(msg.sender, to, amount);
-    }
-
-    function _reportExist(PostLike memory like, uint[] memory postId,address[] memory originalPoster, address[] memory reporter, address [][] memory confirmer) internal returns (bool){
-        for (uint i = 0; i < postId.length; i++) {
-            if (like.postId == postId[i]) {
-                _token.safeTransferFrom(owner(),originalPoster[i] , _likeWorth.mul(like.amountLike));
-                uint amountToDistribute = like.amountDisLike.mul(_likeWorth);
-                uint amountReporter = amountToDistribute.div(2);
-                amountToDistribute = amountToDistribute.sub(amountReporter);
-                uint amountConfirmer = amountToDistribute.div(confirmer[i].length);
-                amountToDistribute = amountToDistribute.sub(amountConfirmer.mul(confirmer[i].length));
-                _token.safeTransferFrom(owner(), reporter[i], amountReporter);
-                for(uint j = 0; j< confirmer[i].length; j++){
-                    _token.safeTransferFrom(owner(), confirmer[i][j],amountConfirmer);
-                }
-                _token.safeTransferFrom(owner(), address (this), amountToDistribute);
-            }
-        }
-        return false;
     }
 
     function rewardForLikes(uint[] memory postId,address[] memory originalPoster, address[] memory reporter, address [][] memory confirmer) public {
