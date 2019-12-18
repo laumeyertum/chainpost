@@ -20,6 +20,6 @@ function sendUserInfo(){
 }
 
 function afterLogin(username){
-    $("#loginPopup").hide();
+    $("#loginPopup").modal('hide');
     sessionStorage.username = username;
 }
