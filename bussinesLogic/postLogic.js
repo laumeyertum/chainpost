@@ -1,6 +1,8 @@
 const post = require("../dataAccess/post");
 const like = require("../dataAccess/like");
 const comment = require("../dataAccess/comment");
+const TokenEconomy = require("../utilities/TokenEconomy");
+const user = require("./../dataAccess/user");
 
 function getTopPost() {
   return post.getTopPost();
@@ -19,11 +21,21 @@ async function createPost(_username, _title,_type, _postContent) {
 async function addLike(_postId, _username, _type) {
   let postExist = await post.postExist(_postId);
   let likeExist = await like.likeExist(_username,_postId);
+  let postCreated;
   if(postExist  && !likeExist) {
-    return post.addLike(_postId, _username, _type);
+    postCreated = await post.addLike(_postId, _username, _type);
   } else {
     return null;
   }
+  let liker = await user.getUserByUsername(_username).get("address");
+  let poster = await post.getPostById(_postId).get("username");
+  let posterAddress = await user.getUserByUsername(poster).get("address");
+  if(_type){
+    await TokenEconomy.giveLike(liker, posterAddress, _postId);
+  } else {
+    await TokenEconomy.giveDisLike(liker, posterAddress, _postId);
+  }
+  return postCreated;
 }
 
 function createComment(_username, _postId, _content) {

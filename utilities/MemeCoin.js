@@ -3,7 +3,7 @@ const fs = require('fs');
 //Web3 interface
 const web3 = new Web3(new Web3.providers.HttpProvider('http://127.0.0.1:4433'));
 //read json file into const from file system
-const MemeCoinJson = fs.readFileSync('./../build/contracts/MemeCoin.json', 'utf8');
+const MemeCoinJson = fs.readFileSync('build/contracts/MemeCoin.json', 'utf8');
 //parse json file from string to object
 const MemeCoinContractObject = JSON.parse(MemeCoinJson);
 //get the abi part of the json file

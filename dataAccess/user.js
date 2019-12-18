@@ -25,6 +25,9 @@ function getUserByAddress(_address){
 
 async function comparePassword(_username,_password){
   let user = await User.findByPk(_username);
+  if(user == null){
+    return false;
+  }
   return await bcrypt.compareSync(_password, user.get("password"))
 }
 

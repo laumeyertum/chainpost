@@ -3,7 +3,7 @@ const fs = require('fs');
 //Web3 interface
 const web3 = new Web3(new Web3.providers.HttpProvider('http://127.0.0.1:4433'));
 //read json file into const from file system
-const TokenEconomyJson = fs.readFileSync('./../build/contracts/TokenEconomy.json', 'utf8');
+const TokenEconomyJson = fs.readFileSync('build/contracts/TokenEconomy.json', 'utf8');
 //parse json file from string to object
 const TokenEconomyContractObject = JSON.parse(TokenEconomyJson);
 //get the abi part of the json file
@@ -26,7 +26,7 @@ async function buyMemeCoin(_address, _value) {
   }
 }
 
-async function giveLike(_to, _postId) {
+async function giveLike(_from, _to, _postId) {
   try {
     await TokenEconomyContract.methods.giveLike(_to, _postId).send();
   } catch (e) {
@@ -52,7 +52,7 @@ async function setLikeWorth(_worth) {
   }
 }
 
-async function giveDisLike(_to, _postId) {
+async function giveDisLike(_from, _to, _postId) {
   try {
     await TokenEconomyContract.methods.giveDisLike(_to, _postId).send();
   } catch (e) {
@@ -60,7 +60,7 @@ async function giveDisLike(_to, _postId) {
   }
 }
 
-async function giveGift(_to, _amount) {
+async function giveGift(_from, _to, _amount) {
   try {
     await TokenEconomyContract.methods.giveGift(_to, _amount).send();
   } catch (e) {
