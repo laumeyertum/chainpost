@@ -36,6 +36,8 @@ async function getTokenOf(_to) {
   return ret;
 }
 
+
+
 module.exports = {
   transfer,
   getTokenOf

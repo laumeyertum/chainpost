@@ -1,8 +1,6 @@
 pragma solidity ^0.5.0;
 
 import "./IERC20.sol";
-import "./SafeMath.sol";
-import "./Context.sol";
 import "../utils/Context.sol";
 import "../utils/SafeMath.sol";
 
@@ -12,11 +10,9 @@ contract MemeCoin is Context, IERC20 {
 
     mapping (address => uint256) private _balances;
     uint256 private _totalSupply;
-    uint private _fee;
 
-    constructor(uint totalSupply, uint fee){
+    constructor(uint totalSupply) public {
         _totalSupply =totalSupply;
-        _fee = fee;
         _balances[msg.sender] = totalSupply;
     }
 
@@ -83,8 +79,7 @@ contract MemeCoin is Context, IERC20 {
         require(recipient != address(0), "ERC20: transfer to the zero address");
 
         _balances[sender] = _balances[sender].sub(amount, "ERC20: transfer amount exceeds balance");
-        _balances[recipient] = _balances[recipient].add(amount*_fee);
-        emit Transfer(sender, recipient, amount);
+        _balances[recipient] = _balances[recipient].add(amount);
     }
 
     /** @dev Creates `amount` tokens and assigns them to `account`, increasing
@@ -101,7 +96,6 @@ contract MemeCoin is Context, IERC20 {
 
         _totalSupply = _totalSupply.add(amount);
         _balances[account] = _balances[account].add(amount);
-        emit Transfer(address(0), account, amount);
     }
 
     /**
@@ -120,6 +114,5 @@ contract MemeCoin is Context, IERC20 {
 
         _balances[account] = _balances[account].sub(amount, "ERC20: burn amount exceeds balance");
         _totalSupply = _totalSupply.sub(amount);
-        emit Transfer(account, address(0), amount);
     }
 }
