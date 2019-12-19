@@ -7,7 +7,7 @@ const prisonLogic = require("../bussinesLogic/prisonLogic");
 router.get('/', async function(req, res, next) {
   let posts  = await postLogic.getTopPost();
   console.log(posts[0].get("type"));
-  console.log(posts.length);
+  console.log(posts.length, "length");
   res.render('index', { title: 'Express',root: '../', postList: posts, postListLength: posts.length });
 });
 
