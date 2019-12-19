@@ -4,7 +4,6 @@ const prison  = require('./prison');
 const Confirmation = sequelize.import("../models/Confirmations.js");
 
 function createConfirmation(_postId, _username, _type) {
-  prison.addConfirmation(_postId,_type);
   return Confirmation.create({
     postId: _postId,
     username: _username,
@@ -18,7 +17,12 @@ function getAllConfirmationsByPostId(_postId){
   return Confirmation.findAll({where:{postId: _postId}});
 }
 
+async function confirmationExist( _postId, _username,){
+  return (await Confirmation.findOne({where:{postId: _postId, username:_username}})) != null;
+}
+
 module.exports ={
   createConfirmation,
-  getAllConfirmationsByPostId
+  getAllConfirmationsByPostId,
+  confirmationExist
 };

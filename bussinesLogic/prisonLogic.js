@@ -19,13 +19,26 @@ async function getAllReports() {
 }
 
 async function reportPost(_repostPostId, _originalPostId, _username) {
-  if (!await prison.reportExist(_repostPostId)) {
+  if (!await prison.reportExist(_repostPostId) || !await  post.postExist(_repostPostId) || !await post.postExist(_originalPostId)) {
     return null;
   }
   let report = await prison.createReport(_repostPostId, _originalPostId, _username);
+  await prison.addConfirmation(_repostPostId, true);
   confirmation.createConfirmation(_repostPostId, _username);
   return report;
 }
+
+async function addConfiramtion(_username,_postId, _type) {
+  let reportExist = await prison.reportExist(_postId);
+  let confirmationExist = await confirmation.confirmationExist(_postId,_username);
+  if(reportExist  && !confirmationExist) {
+    await prison.addConfirmation(_postId, _type);
+    return await confirmation.createConfirmation(_postId,_username,_type);
+  } else {
+    return null;
+  }
+}
+
 //TODO add differentiation between repost and false report
 async function resolveReports() {
   let allReports = prison.getAllReports();
@@ -59,5 +72,6 @@ async function resolveReports() {
 module.exports = {
   getAllReports,
   reportPost,
-  resolveReports
+  resolveReports,
+  addConfiramtion
 };
