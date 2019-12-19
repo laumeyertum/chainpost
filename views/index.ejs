@@ -10,7 +10,8 @@
 <div>
     <div class="row shadow p-3 mb-5 bg-white rounded" style="width: 80%; margin-left: 50px; margin-top: 10px;">
         <h2>Create a new post</h2>
-        <form id="postForm" style="width: 100%" method="post" action="/posting" onsubmit="JavaScript: postpost()">
+        <div id="postError" style="display: none;"><p style="color:red">Please fill in all fields!</p></div>
+        <form id="postForm" style="width: 100%">
             <div class="form-group">
                 <input type="text" class="form-control" id="postTitle" placeholder="Title">
             </div>
@@ -28,7 +29,7 @@
                 <input id="upload" type="file" name="pic" accept="image/*">
             </div>
             <div class="form-group" align="right" style="margin-bottom: 0px;">
-                <button type="submit" class="btn btn-primary mb-2">Post</button>
+                <button type="button" onclick="postpost()" class="btn btn-primary mb-2">Post</button>
             </div>
         </form>
     </div>

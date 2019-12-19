@@ -31,40 +31,47 @@ function encodeImageFileAsURL() {
 function postpost() {
     let title = $('#postTitle').val();
     let username = sessionStorage.getItem("username");
-    if (username && title && (document.getElementById("postText").value.length > 0 || document.getElementById("upload").val())) {
-        let type = $('#typeSelection input:radio:checked').val();
-        encodeImageFileAsURL();
-        let content;
-        if (type === "image") {
-            content = base64;
-        } else if (type === "text") {
-            content = document.getElementById("postText").value;
-        } else {
-            console.log('No picture or text selected');
-            return;
-        }
-        base64 = null;
-        //return [title, content, type, username];
+    console.log("1", document.getElementById("upload"));
+    console.log("2", document.getElementById("upload").val());
 
-        let post =
-            {
-                username: username,
-                title: title,
-                type: updown,
-                content: content
-            };
-        console.log("here");
-        $.ajax({
-            type: 'POST',
-            url: "/posting",
-            data: post,
-            dataType: 'json',
-            success: function (){
-                //location.reload();
+    if (username) {
+        if (title && (document.getElementById("postText").value.length > 0 || document.getElementById("upload").val())) {
+            let type = $('#typeSelection input:radio:checked').val();
+            let content;
+            if (type === "image") {
+                encodeImageFileAsURL();
+                content = base64;
+            } else if (type === "text") {
+                content = document.getElementById("postText").value;
+            } else {
+                console.log('No picture or text selected');
+                return;
+            }
+            base64 = null;
+            document.getElementById("postError").style.display = "none";
+
+            let post =
+                {
+                    username: username,
+                    title: title,
+                    type: type,
+                    content: content
+                };
+            console.log("here");
+            $.ajax({
+                type: 'POST',
+                url: "/posting",
+                data: post,
+                dataType: 'json',
+                success: function () {
+                    location.reload();
                 }
-        });
+            });
+        } else {
+            document.getElementById("postError").style.display = "block";
+        }
     } else {
-        $("loginPopup").show();
+        $('#loginPopup').modal('show');
     }
 }
 
