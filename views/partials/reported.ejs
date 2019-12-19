@@ -1,11 +1,11 @@
 <div>
     <div class="row shadow p-3 mb-5 bg-white rounded" style="width: 80%; margin-left: 50px; margin-top: 10px;">
         <div class="col-2">
-            <h5>posted by user1</h5>
-            <p>10/11/2019 at 10:11</p>
+            <h5>posted by <%- repostList[i].get("username")%></h5>
+            <p><%-repostList[i].get("createdAt")%></p>
             <br>
-            <h5>flagged by user2</h5>
-            <p>10/11/2019 at 12:54</p>
+            <h5><%-reportList[i].get("flagger")%></h5>
+            <p><%-reportList[i].get("createdAt")%></p>
         </div>
         <div class="col-6">
             <img src="images/Chainmail_helmet.png" style="height: 100%; max-width: 100%">
@@ -16,8 +16,8 @@
                 <div class="card-body">
                     <h5 class="card-title">OC info</h5>
                     <p class="card-text">
-                        Posted on 03/04/2019 at 22:10
-                        By user0
+                        Posted on <%-originalList[i].get("createdAt")%>
+                        By <%-originalList[i].get("username")%>
                     </p>
                 </div>
             </div>

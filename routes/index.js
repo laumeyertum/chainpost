@@ -6,8 +6,6 @@ const prisonLogic = require("../bussinesLogic/prisonLogic");
 /* GET home page. */
 router.get('/', async function(req, res, next) {
   let posts  = await postLogic.getTopPost();
-  console.log(posts[0].get("type"));
-  console.log(posts.length);
   res.render('index', { title: 'Express',root: '../', postList: posts, postListLength: posts.length });
 });
 
@@ -38,5 +36,7 @@ router.post('/report', async function(req, res, next){
   let report  =  await prisonLogic.reportPost(repostPostId,originalPostId,username);
   res.send(report);
 });
+
+
 
 module.exports = router;

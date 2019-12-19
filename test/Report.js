@@ -36,9 +36,9 @@ async function testReport() {
   console.log("reported");
   await prisonLogic.addConfiramtion(username2, post2.get("postId"), true);
   console.log("added confirmation");
-  await prisonLogic.resolveReports();
-  console.log(await MemeCoin.getBalanceOf(address));
-  console.log(await MemeCoin.getBalanceOf(address2));
+  // await prisonLogic.resolveReports();
+  // console.log(await MemeCoin.getBalanceOf(address));
+  // console.log(await MemeCoin.getBalanceOf(address2));
 }
 
 testReport();

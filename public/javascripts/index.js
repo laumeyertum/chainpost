@@ -35,7 +35,7 @@ function postpost() {
     console.log("2", document.getElementById("upload").val());
 
     if (username) {
-        if (title && (document.getElementById("postText").value.length > 0 || document.getElementById("upload").val())) {
+        if (title && (document.getElementById("postText").value.length > 0 || document.getElementById("upload").files.length === 1)) {
             let type = $('#typeSelection input:radio:checked').val();
             let content;
             if (type === "image") {

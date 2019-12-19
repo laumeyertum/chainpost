@@ -7,11 +7,9 @@
     </head>
     <body>
         <% include partials/navigationBar.ejs %>
-        <% /* %>
-        <% flaggedList.forEach(function(post){ %>
-            <%- include('partials/reported'); %>
-        <% }); %>
-        <% */ %>
+        <% for(let i =0;i<reportList.length; i++){ %>
+            <%- include('partials/reported', {i: i}); %>
+        <% } %>
     </body>
     <% include partials/script.ejs %>
 </html>
