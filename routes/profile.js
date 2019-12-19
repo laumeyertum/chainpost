@@ -12,12 +12,12 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/user', async function(req, res, next) {
-  let user = await user.getUserByUsername(req.body.username);
+  let userData = await user.getUserByUsername(req.body.username);
   // let userJson = {
   //   username: user.get("username"),
   //   address: user.get('address')
   // };
-  res.send(user);
+  res.send(userData);
 });
 
 router.post('/userPosts', async function(req, res, next) {

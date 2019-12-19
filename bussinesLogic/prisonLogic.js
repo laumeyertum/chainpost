@@ -19,13 +19,14 @@ async function getAllReports() {
 }
 
 async function reportPost(_repostPostId, _originalPostId, _username) {
-  console.log(!await prison.reportExist(_repostPostId));
-  console.log(await  post.postExist(_repostPostId));
-  console.log(await post.postExist(_originalPostId));
+  console.log(await prison.reportExist(_repostPostId));
+  console.log(_originalPostId, _repostPostId);
+  console.log(!await post.postExist(_repostPostId));
+  console.log(!await post.postExist(_originalPostId));
   if (await prison.reportExist(_repostPostId) || !await  post.postExist(_repostPostId) || !await post.postExist(_originalPostId)) {
     return null;
   }
-  console.log("here");
+  console.log("createReport");
   return await prison.createReport(_repostPostId, _originalPostId, _username);
 }
 

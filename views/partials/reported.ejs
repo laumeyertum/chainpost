@@ -9,11 +9,11 @@
             <p><%-reportList[i].get("createdAt")%></p>
         </div>
         <div class="col-6">
-            <img src="images/Chainmail_helmet.png" style="height: 100%; max-width: 100%">
+            <img src="<%- repostList[i].get("postContent") %>" style="height: 100%; max-width: 100%">
         </div>
         <div class="col-3">
             <div class="card text-center">
-                <img src="images/Chainmail_helmet.png" class="card-img-top">
+                <img src="<%- originalList[i].get("postContent") %>" class="card-img-top">
                 <div class="card-body">
                     <h5 class="card-title">OC info</h5>
                     <p class="card-text">
