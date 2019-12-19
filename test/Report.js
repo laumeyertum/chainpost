@@ -16,8 +16,8 @@ let address2 = "0x6bD436D36e0046Ec23c54126A6503d9a75968eCB";
 let password2 = "password";
 
 async function testReport() {
-  await TokenEconomy.buyMemeCoin(address, 1000);
-  await TokenEconomy.buyMemeCoin(address2, 1000);
+  await TokenEconomy.buyMemeCoin(address, 100);
+  await TokenEconomy.buyMemeCoin(address2, 100);
   console.log(await MemeCoin.getBalanceOf(address));
   console.log(await MemeCoin.getBalanceOf(address2));
   let user1 = await userLogic.register(username, address, password);

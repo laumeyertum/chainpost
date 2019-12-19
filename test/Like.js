@@ -10,7 +10,7 @@ let content = "testContent";
 let type = "text";
 
 async function createUserAndLikePost() {
-  await TokenEconomy.buyMemeCoin(address, 1000);
+  await TokenEconomy.buyMemeCoin(address, 100);
   console.log("start");
   await userLogic.register(username,address, password);
   console.log("register");
