@@ -56,6 +56,10 @@ function getPostsByUsername(_username){
   return Post.findAll({where:{username: _username}});
 }
 
+function removePostById(_postId){
+  Post.destroy({where:{postId: _postId}});
+}
+
 module.exports = {
   createPost,
   postExist,
@@ -63,5 +67,6 @@ module.exports = {
   getNewPost,
   getTopPost,
   getPostById,
-  getPostsByUsername
+  getPostsByUsername,
+  removePostById
 };

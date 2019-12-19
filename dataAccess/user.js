@@ -39,11 +39,16 @@ async function addressExist(_address){
   return (await User.findOne({where:{address: _address}}))!= null;
 }
 
+async  function getAddressByUsername(_username){
+  return await getUserByUsername(_username).get("address");
+}
+
 module.exports = {
   getUserByUsername,
   getUserByAddress,
   createUser,
   comparePassword,
   userExist,
-  addressExist
+  addressExist,
+  getAddressByUsername
 };

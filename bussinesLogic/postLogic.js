@@ -42,10 +42,17 @@ function createComment(_username, _postId, _content) {
   comment.createComment(_username,_postId,_content);
 }
 
+function removeRepost(_postId){
+  for (let i = 0; i <_postId.length ; i++) {
+    post.removePostById(_postId[i]);
+  }
+}
+
 module.exports = {
   getTopPost,
   getNewPost,
   createPost,
   addLike,
-  createComment
+  createComment,
+  removeRepost
 };
