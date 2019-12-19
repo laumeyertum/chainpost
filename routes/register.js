@@ -19,4 +19,12 @@ router.post('/registerForm', function(req, res, next){
     res.redirect('./../');
 });
 
+/* Submit login info */
+router.post('/loginForm', async function(req, res, next){
+    console.log("loggedin");
+    let success = user.login(req.body.username, req.body.password);
+    console.log(req.body.username);
+    if (success) res.send();
+})
+
 module.exports = router;

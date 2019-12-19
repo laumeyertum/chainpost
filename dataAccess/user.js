@@ -1,15 +1,13 @@
-const bcrypt = require('bcrypt');
 const Sequelize  = require('./../utilities/sequelize');
 const sequelize = Sequelize.sequelize;
 
 const User = sequelize.import("../models/Users.js");
 
 function createUser(_username, _address, _password) {
-  let password = bcrypt.hashSync(_password, 12);
   return User.create({
     username: _username,
     address: _address,
-    password: password,
+    password: _password,
     createdAt: new Date(),
     updatedAt: new Date()
   });
@@ -25,10 +23,7 @@ function getUserByAddress(_address){
 
 async function comparePassword(_username,_password){
   let user = await User.findByPk(_username);
-  if(user == null){
-    return false;
-  }
-  return await bcrypt.compareSync(_password, user.get("password"))
+  return (await user.get("password")) === _password
 }
 
 async function userExist(_username){
