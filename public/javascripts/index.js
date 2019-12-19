@@ -1,5 +1,3 @@
-let base64;
-
 function changeInputField() {
     let selected = $('#typeSelection input:radio:checked').val();
     let textinput = document.getElementById("inputTextdiv");
@@ -12,22 +10,6 @@ function changeInputField() {
         imageinput.style.display = "block";
     }
 }
-
-// async function encodeImageFileAsURL() {
-//     let file = document.getElementById('upload').files[0];
-//     let reader = new FileReader();
-//
-//     await reader.addEventListener("load", async function() {
-//         base64 = {fuckthis: await reader.result};
-//         // document.getElementById('help').src = reader.result;
-//         // base64 = document.getElementById('help').src;
-//     }, false);
-//
-//     if (file) {
-//         reader.readAsDataURL(file);
-//     }
-//     console.log("HEEEELP", base64);
-// }
 
 async function postpost() {
     console.log("postpost");
