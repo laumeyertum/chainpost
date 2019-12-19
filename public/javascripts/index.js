@@ -30,7 +30,7 @@ function encodeImageFileAsURL() {
 
 function postpost() {
     let title = $('#postTitle').val();
-    let username = localStorage.getItem("username");
+    let username = sessionStorage.getItem("username");
     if (username && title && (document.getElementById("postText").value.length > 0 || document.getElementById("upload").val())) {
         let type = $('#typeSelection input:radio:checked').val();
         encodeImageFileAsURL();
