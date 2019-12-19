@@ -13,7 +13,7 @@ function validatePassword(){
 
 function validateAddress(){
     console.log("adress");
-    if((address.value().size!=40) || (!re.test(address.value))){
+    if((address.value.size!=40) || (!re.test(address.value))){
         console.log("invalid address");
         address.setCustomValidity("Invalid address format");
     }else{
