@@ -11,11 +11,8 @@ router.get('/', async function(req, res, next) {
 
 router.post('/posting', async function (req, res, next) {
   console.log("here2");
-  console.log(req.body);
   let username = await req.body.username;
-  console.log(username);
   let title = req.body.title;
-  console.log(title);
   let type = req.body.type;
   let content = req.body.content;
   let post  =  await postLogic.createPost(username, title, type, content);

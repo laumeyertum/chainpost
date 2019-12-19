@@ -13,6 +13,7 @@ function getNewPost() {
 }
 
 async function createPost(_username, _title,_type, _postContent) {
+  console.log("postLogic");
   return await post.createPost(_username, _title, _type, _postContent);
 }
 

@@ -5,12 +5,15 @@ const Post = sequelize.import("../models/Posts.js");
 const Like = require("./like");
 
 function createPost(_username, _title, _type, _postContent) {
+  console.log("dataaccess");
+  // let content = _type==="image"?_postContent[1]:_postContent;
+  console.log(_postContent);
   return Post.create({
     username: _username,
     title: _title,
     type: _type,
     likeCount: 0,
-    postContent: _postContent,
+    postContent: _type==="image"?_postContent.content:_postContent,
     createdAt: new Date(),
     updatedAt: new Date()
   });

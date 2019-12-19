@@ -11,6 +11,8 @@ const policingRouter = require('./routes/policing');
 const registerRouter = require('./routes/register');
 
 const app = express();
+app.use(bodyParser.json({limit: '50mb', extended: true}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -24,6 +26,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
 
 app.use('/', indexRouter);
 app.use('/profile', profileRouter);
