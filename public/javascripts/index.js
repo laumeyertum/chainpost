@@ -13,33 +13,48 @@ function changeInputField() {
     }
 }
 
-function encodeImageFileAsURL() {
-    let filesSelected = document.getElementById("inputFileToLoad").files;
-    if (filesSelected.length === 0) {
-        let fileToLoad = filesSelected[0];
-        let fileReader = new FileReader();
-        fileReader.onload = function(fileLoadedEvent) {
-            let srcData = fileLoadedEvent.target.result; // <--- data: base64
-            let newImage = document.createElement('img');
-            newImage.src = srcData.toString();
-            base64 = newImage.outerHTML;
-        };
-        fileReader.readAsDataURL(fileToLoad);
+/*
+function previewFile() {
+  var preview = document.querySelector('img');
+  var file    = document.querySelector('input[type=file]').files[0];
+  var reader  = new FileReader();
+
+  reader.addEventListener("load", function () {
+    preview.src = reader.result;
+  }, false);
+
+  if (file) {
+    reader.readAsDataURL(file);
+  }
+}
+ */
+
+async function encodeImageFileAsURL() {
+    let file = document.getElementById('upload').files[0];
+    let reader = new FileReader();
+
+    await reader.addEventListener("load", async function() {
+        base64 = {fuckthis: await reader.result};
+        // document.getElementById('help').src = reader.result;
+        // base64 = document.getElementById('help').src;
+    }, false);
+
+    if (file) {
+        reader.readAsDataURL(file);
     }
+    console.log("HEEEELP", base64);
 }
 
-function postpost() {
+async function postpost() {
     let title = $('#postTitle').val();
     let username = sessionStorage.getItem("username");
-    console.log("1", document.getElementById("upload"));
-    console.log("2", document.getElementById("upload").val());
 
     if (username) {
         if (title && (document.getElementById("postText").value.length > 0 || document.getElementById("upload").files.length === 1)) {
             let type = $('#typeSelection input:radio:checked').val();
             let content;
             if (type === "image") {
-                encodeImageFileAsURL();
+                await encodeImageFileAsURL();
                 content = base64;
             } else if (type === "text") {
                 content = document.getElementById("postText").value;
