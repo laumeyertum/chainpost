@@ -7,15 +7,15 @@ const postLogic = require('./postLogic');
 
 async function getAllReports() {
   let reports = await prison.getAllReports();
-  let repostPosts = [];
-  let originalPosts = [];
-  for (let i = 0; i < reports.length; i++) {
-    let repostPostId = await reports[i].get('repostPostId');
-    let originalPostId = await reports[i].get('originalPostId');
-    repostPosts.push(await post.getPostById(repostPostId));
-    originalPosts.push(await post.getPostById(originalPostId));
-  }
-  return [reports, repostPosts, originalPosts];
+  // let repostPosts = [];
+  // let originalPosts = [];
+  // for (let i = 0; i < reports.length; i++) {
+  //   let repostPostId = await reports[i].get('repostPostId');
+  //   let originalPostId = await reports[i].get('originalPostId');
+  //   repostPosts.push(await post.getPostById(repostPostId));
+  //   originalPosts.push(await post.getPostById(originalPostId));
+  // }
+  return reports;
 }
 
 async function reportPost(_repostPostId, _originalPostId, _username) {

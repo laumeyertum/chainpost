@@ -1,10 +1,11 @@
 <div>
     <div class="row shadow p-3 mb-5 bg-white rounded" style="width: 80%; margin-left: 50px; margin-top: 10px;">
         <div class="col-2">
-            <h5>posted by <%- repostList[i].get("username")%></h5>
+            <div hidden><%- reportList[i].get("repostPostId") %></div>
+            <h5>Posted by <%- repostList[i].get("username")%></h5>
             <p><%-repostList[i].get("createdAt")%></p>
             <br>
-            <h5><%-reportList[i].get("flagger")%></h5>
+            <h5>Flagged by <%-reportList[i].get("flagger")%></h5>
             <p><%-reportList[i].get("createdAt")%></p>
         </div>
         <div class="col-6">
@@ -23,8 +24,9 @@
             </div>
         </div>
         <div class="col-1">
-            <a href="#"><img src="/images/icons/circle-check.svg" style="height: 64px; margin: 10px; filter: invert(19%) sepia(92%) saturate(6727%) hue-rotate(128deg) brightness(98%) contrast(103%);"></a>
-            <a href="#"><img src="/images/icons/circle-x.svg" style="height: 64px; margin: 10px; filter: invert(23%) sepia(93%) saturate(7396%) hue-rotate(358deg) brightness(104%) contrast(114%);"></a>
+            <a onclick="judgereport(this, true)"><img src="/images/icons/circle-check.svg" style="height: 64px; margin: 10px; filter: invert(19%) sepia(92%) saturate(6727%) hue-rotate(128deg) brightness(98%) contrast(103%);"></a>
+            <a onclick="judgereport(this, false)"><img src="/images/icons/circle-x.svg" style="height: 64px; margin: 10px; filter: invert(23%) sepia(93%) saturate(7396%) hue-rotate(358deg) brightness(104%) contrast(114%);"></a>
         </div>
     </div>
 </div>
+<script src="./javascripts/judgereport.js"></script>
