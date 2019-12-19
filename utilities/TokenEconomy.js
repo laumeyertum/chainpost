@@ -46,7 +46,8 @@ async function getLikeWorth() {
 
 async function setLikeWorth(_worth) {
   try {
-    await TokenEconomyContract.methods.setLikeWorth(_worth).send({from: "0xa79824a80dF3234627eba4E47453825fB827C205"});
+    await TokenEconomyContract.methods.setLikeWorth(_worth).
+        send({from: '0xa79824a80dF3234627eba4E47453825fB827C205'});
   } catch (e) {
     console.log(e);
   }
@@ -54,7 +55,7 @@ async function setLikeWorth(_worth) {
 
 async function giveDisLike(_from, _to, _postId) {
   try {
-    await TokenEconomyContract.methods.giveDisLike(_to, _postId).send({from:_from});
+    await TokenEconomyContract.methods.giveDisLike(_to, _postId).send({from: _from});
   } catch (e) {
     console.log(e);
   }
@@ -62,7 +63,7 @@ async function giveDisLike(_from, _to, _postId) {
 
 async function giveGift(_from, _to, _amount) {
   try {
-    await TokenEconomyContract.methods.giveGift(_to, _amount).send({from:_from});
+    await TokenEconomyContract.methods.giveGift(_to, _amount).send({from: _from});
   } catch (e) {
     console.log(e);
   }
@@ -70,17 +71,18 @@ async function giveGift(_from, _to, _amount) {
 
 async function rewardForLikes(_reportedPostId, _originalPoster, _reporter, _confirmer) {
   try {
-    await TokenEconomyContract.methods.rewardForLikes(_reportedPostId, _originalPoster, _reporter, _confirmer).send({from: "0xa79824a80dF3234627eba4E47453825fB827C205"});
+    await TokenEconomyContract.methods.rewardForLikes(_reportedPostId, _originalPoster, _reporter,
+        _confirmer).send({from: '0xa79824a80dF3234627eba4E47453825fB827C205'});
   } catch (e) {
     console.log(e);
   }
 }
 
-function getTokenEconomyContractAbi(){
+function getTokenEconomyContractAbi() {
   return TokenEconomyAbi;
 }
 
-function getTokenEconomyContractAddress(){
+function getTokenEconomyContractAddress() {
   return TokenEconomyAddress;
 }
 

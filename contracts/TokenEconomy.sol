@@ -26,7 +26,7 @@ contract TokenEconomy is Ownable {
         uint amountDisLike;
     }
 
-    constructor(address tokenAddress, address payable wallet, uint rate) public {
+    constructor(address tokenAddress, address payable wallet, uint rate) public Ownable() {
         require(rate > 0, "TokenEconomy: rate is 0");
         require(wallet != address(0), "TokenEconomy: wallet is the zero address");
         require(address(tokenAddress) != address(0), "TokenEconomy: token is the zero address");
@@ -102,7 +102,7 @@ contract TokenEconomy is Ownable {
     function giveLike(address to, uint postId) external {
         _token.safeTransferFrom(msg.sender, owner(), _likeWorth);
         if (likeMapping[postId].postId == 0) {
-            PostLike(postId, to, 1, 0);
+            likeMapping[postId] = PostLike(postId, to, 1, 0);
             postLikeList.push(postId);
         } else {
             likeMapping[postId].amountLike += 1;
@@ -120,7 +120,7 @@ contract TokenEconomy is Ownable {
     function giveDisLike(address to, uint postId) external {
         _token.safeTransferFrom(msg.sender, owner(), _likeWorth);
         if (likeMapping[postId].postId == 0) {
-            PostLike(postId, to, 0, 1);
+            likeMapping[postId] = PostLike(postId, to, 0, 1);
             postLikeList.push(postId);
         } else {
             likeMapping[postId].amountDisLike += 1;
@@ -135,8 +135,8 @@ contract TokenEconomy is Ownable {
         for (uint i = 0; i < postLikeList.length; i++) {
             PostLike memory postLikeElement = likeMapping[postLikeList[i]];
             if (!_reportExist(postLikeElement, postId, originalPoster, reporter, confirmer)) {
-                _token.safeTransferFrom(owner(), postLikeElement.poster, _likeWorth * postLikeElement.amountLike);
-                _token.safeTransferFrom(owner(), address(this), _likeWorth * postLikeElement.amountDisLike);
+//                _token.safeTransferFrom(owner(), postLikeElement.poster, _likeWorth * postLikeElement.amountLike);
+//                _token.safeTransferFrom(owner(), address(this), _likeWorth * postLikeElement.amountDisLike);
             }
         }
         _resetMapping();

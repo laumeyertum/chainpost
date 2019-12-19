@@ -12,7 +12,7 @@ let type = "text";
 async function createUserAndLikePost() {
   await TokenEconomy.buyMemeCoin(address, 1000);
   console.log("start");
-  await userLogic.login(username, password);
+  await userLogic.register(username,address, password);
   console.log("register");
   let post = await postLogic.createPost(username, title, type, content);
   console.log("postcreated");

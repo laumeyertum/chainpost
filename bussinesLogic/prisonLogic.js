@@ -19,13 +19,14 @@ async function getAllReports() {
 }
 
 async function reportPost(_repostPostId, _originalPostId, _username) {
-  if (!await prison.reportExist(_repostPostId) || !await  post.postExist(_repostPostId) || !await post.postExist(_originalPostId)) {
+  console.log(!await prison.reportExist(_repostPostId));
+  console.log(await  post.postExist(_repostPostId));
+  console.log(await post.postExist(_originalPostId));
+  if (await prison.reportExist(_repostPostId) || !await  post.postExist(_repostPostId) || !await post.postExist(_originalPostId)) {
     return null;
   }
-  let report = await prison.createReport(_repostPostId, _originalPostId, _username);
-  await prison.addConfirmation(_repostPostId, true);
-  confirmation.createConfirmation(_repostPostId, _username);
-  return report;
+  console.log("here");
+  return await prison.createReport(_repostPostId, _originalPostId, _username);
 }
 
 async function addConfiramtion(_username,_postId, _type) {
@@ -41,32 +42,38 @@ async function addConfiramtion(_username,_postId, _type) {
 
 //TODO add differentiation between repost and false report
 async function resolveReports() {
-  let allReports = prison.getAllReports();
+  let allReports = await prison.getAllReports();
   let postId = [];
   let originalPoster = [];
   let reporter = [];
   let confirmer = [];
 
-
+  console.log(allReports.length);
   for (let i = 0; i < allReports.length; i++) {
     let report = allReports[i];
-    let reportPostId = report.get('repostPostId');
+    let reportPostId = await report.get('repostPostId');
+    console.log(report.get("confirmations"));
     if(report.get("confirmations")<=0){
       continue;
     }
     postId.push(reportPostId);
-    originalPoster.push(
-        user.getAddressByUsername(post.getPostById(report.get('originalPostId')).get('username')));
-    report.push(user.getAddressByUsername(report.get('flagger')));
-    let confirmations = confirmation.getAllConfirmationsByPostId(reportPostId);
+    originalPoster.push(await
+        user.getAddressByUsername(await post.getPostById(await report.get('originalPostId')).get('username')));
+    reporter.push(await user.getAddressByUsername(await report.get('flagger')));
+    let confirmations = await confirmation.getAllConfirmationsByPostId(reportPostId);
     let confirmerAddress = [];
     for (let j = 0; j < confirmations.length; j++) {
-      confirmerAddress.push(user.getAddressByUsername(confirmations[i].get('username')));
+      confirmerAddress.push(await user.getAddressByUsername(await confirmations[i].get('username')));
     }
     confirmer.push(confirmerAddress);
   }
+  console.log("here");
+  console.log(postId);
+  console.log(originalPoster);
+  console.log(reporter);
+  console.log(confirmer);
   await TokenEconomy.rewardForLikes(postId, originalPoster, reporter, confirmer);
-  postLogic.removeRepost(postId);
+  await postLogic.removeRepost(postId);
 }
 
 module.exports = {

@@ -7,7 +7,7 @@ function createReport(_repostPostId, _originalPostId, _username) {
   return Prison.create({
     repostPostId: _repostPostId,
     originalPostId: _originalPostId,
-    username: _username,
+    flagger: _username,
     confirmations: 0,
     createdAt: new Date(),
     updatedAt: new Date()
@@ -31,7 +31,7 @@ async function addConfirmation(_postId, _type){
     } else {
       i = -1;
     }
-    sequelize.query("UPDATE Prisons SET confirmation = confirmation +" + i + " WHERE postId = " + _postId);
+    sequelize.query("UPDATE Prison SET confirmations = confirmations +" + i + " WHERE repostPostId = " + _postId);
   }
 }
 
