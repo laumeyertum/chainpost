@@ -28,6 +28,7 @@ async function buyMemeCoin(_address, _value) {
 
 async function giveLike(_from, _to, _postId) {
   try {
+    console.log(_postId);
     await TokenEconomyContract.methods.giveLike(_to, _postId).send({from: _from});
   } catch (e) {
     console.log(e);

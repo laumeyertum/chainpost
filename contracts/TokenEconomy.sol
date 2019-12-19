@@ -101,7 +101,7 @@ contract TokenEconomy is Ownable {
 
     function giveLike(address to, uint postId) external {
         _token.safeTransferFrom(msg.sender, owner(), _likeWorth);
-        if (likeMapping[postId].postId == 0) {
+        if (likeMapping[postId].postId == 1) {
             likeMapping[postId] = PostLike(postId, to, 1, 0);
             postLikeList.push(postId);
         } else {
@@ -119,7 +119,7 @@ contract TokenEconomy is Ownable {
 
     function giveDisLike(address to, uint postId) external {
         _token.safeTransferFrom(msg.sender, owner(), _likeWorth);
-        if (likeMapping[postId].postId == 0) {
+        if (likeMapping[postId].postId == 1) {
             likeMapping[postId] = PostLike(postId, to, 0, 1);
             postLikeList.push(postId);
         } else {
