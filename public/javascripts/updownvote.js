@@ -1,9 +1,8 @@
 function updownvote(buttonobj, updown) {
   let postID = buttonobj.parentElement.parentElement.firstChild.nextSibling.nextSibling.nextSibling.innerHTML;
   console.log(postID);
-  // let username = localStorage.getItem('username');
-  //TODO change to real username
-  let username = "test1";
+  let username = sessionStorage.getItem("username");
+
   //updown is true for an upvote and false for a downvote.
 
   let like =

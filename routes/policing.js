@@ -19,4 +19,11 @@ router.get('/', async function(req, res, next) {
     res.render('policing', { title: 'Express',root: '../', reportList: reportList, repostList: repostList, originalList: originalList });
 });
 
+router.post('/confirmRepost', async function(req, res, next) {
+    let username = req.body.username;
+    let postId = req.body.postId;
+    let type = req.body.type;
+    return await prisonLogic.addConfiramtion(username, postId, type);
+});
+
 module.exports = router;
