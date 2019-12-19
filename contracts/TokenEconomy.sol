@@ -80,6 +80,15 @@ contract TokenEconomy is Ownable {
         return false;
     }
 
+    function _resetMapping() internal{
+        for(uint i =0; i<postLikeList.length; i++){
+            likeMapping[postLikeList[i]].postId = 0;
+            likeMapping[postLikeList[i]].amountLike = 0;
+            likeMapping[postLikeList[i]].amountDisLike = 0;
+        }
+        delete postLikeList;
+    }
+
     function buyMemeCoin(address beneficiary) public payable {
         uint256 weiAmount = msg.value;
         _preValidatePurchase(beneficiary, weiAmount);
@@ -130,6 +139,7 @@ contract TokenEconomy is Ownable {
                 _token.safeTransferFrom(owner(), address(this), _likeWorth * postLikeElement.amountDisLike);
             }
         }
+        _resetMapping();
     }
 
 }

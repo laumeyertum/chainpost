@@ -5851,12 +5851,12 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0x6E11668dC5021B46DBD7c36dCe20Ab4B0123067C",
-      "transactionHash": "0xd2377cfad49214a57f3a7bd5b7d145f668d65074687f95acbf3b2db480abcb2d"
+      "address": "0x6f29d414e2e901379D3C356e8a6fF2a730387c9A",
+      "transactionHash": "0x22b49a37c3c3bfd643ea94a1e1af38998be57a481aaab30370562eeaf9e4cd06"
     }
   },
   "schemaVersion": "3.0.17",
-  "updatedAt": "2019-12-18T10:36:12.875Z",
+  "updatedAt": "2019-12-19T03:51:21.625Z",
   "networkType": "ethereum",
   "devdoc": {
     "methods": {

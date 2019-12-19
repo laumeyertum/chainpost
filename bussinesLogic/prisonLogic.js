@@ -38,6 +38,9 @@ async function resolveReports() {
   for (let i = 0; i < allReports.length; i++) {
     let report = allReports[i];
     let reportPostId = report.get('repostPostId');
+    if(report.get("confirmations")<=0){
+      continue;
+    }
     postId.push(reportPostId);
     originalPoster.push(
         user.getAddressByUsername(post.getPostById(report.get('originalPostId')).get('username')));

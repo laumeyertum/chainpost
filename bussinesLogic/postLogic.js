@@ -13,17 +13,15 @@ function getNewPost() {
 }
 
 async function createPost(_username, _title,_type, _postContent) {
-  let createdPost = await post.createPost(_username,_title,_type,_postContent);
-  like.createLike(_username,await createdPost.get("postId"), true);
-  return createdPost;
+  return await post.createPost(_username, _title, _type, _postContent);
 }
 
-async function addLike(_postId, _username, _type) {
+async function addLike(_username,_postId, _type) {
   let postExist = await post.postExist(_postId);
   let likeExist = await like.likeExist(_username,_postId);
   let postCreated;
   if(postExist  && !likeExist) {
-    postCreated = await post.addLike(_postId, _username, _type);
+    postCreated = await post.addLike(_username, _postId, _type);
   } else {
     return null;
   }

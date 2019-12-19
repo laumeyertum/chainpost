@@ -16,9 +16,9 @@ function createPost(_username, _title, _type, _postContent) {
   });
 }
 
-async function addLike(_postId, _username, _type){
+async function addLike(_username,_postId, _type){
   if(await postExist(_postId)) {
-    Like.createLike(_postId,_username, _type);
+    Like.createLike(_username, _postId, _type);
     let i;
     if (_type) {
       i = 1;
