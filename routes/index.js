@@ -23,7 +23,7 @@ router.post('/upDownVote', async function(req, res, next) {
   let username = req.body.username;
   let postId = req.body.postId;
   let type = req.body.type;
-  return await postLogic.addLike(postId, username, type);
+  return await postLogic.addLike(username, postId, type);
 });
 
 router.post('/report', async function(req, res, next){

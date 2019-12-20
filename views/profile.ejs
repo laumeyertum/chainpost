@@ -14,15 +14,15 @@
     <div class="col">
         <form>
             <div class="form-group row">
-                <label for="staticName" class="col-sm-2 col-form-label" >Name</label>
+                <label for="staticName" class="col-sm-2 col-form-label">Name</label>
                 <div class="col-sm-10">
-                    <span id="username">John Doe</span>
+                    <span id="usernameX"></span>
                 </div>
             </div>
             <div class="form-group row">
                 <label for="staticAddress" class="col-sm-2 col-form-label">Address</label>
                 <div class="col-sm-10">
-                    <span id="address">0x0472ec0185ebb8202f3d4ddb0226998889663cf2</span>
+                    <span id="addressX"></span>
                 </div>
             </div>
             <div class="form-group row">
@@ -34,25 +34,80 @@
         </form>
     </div>
 </div>
-<!--    <div class="row shadow p-3 mb-5 bg-white rounded" style="width: 80%; margin-left: 50px; margin-top: 10px;">-->
-<!--        <div class="bd-example bd-example-tabs">-->
-<!--            <nav>-->
-<!--                <div class="nav nav-tabs" id="nav-tab" role="tablist">-->
-<!--                    <a class="nav-item nav-link active" id="nav-posts-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Posts</a>-->
-<!--                    <a class="nav-item nav-link" id="nav-comments-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Comments</a>-->
-<!--                    <a class="nav-item nav-link" id="nav-liked-posts-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Liked posts</a>-->
-<!--                </div>-->
-<!--            </nav>-->
-<!--            <div class="tab-content" id="nav-tabContent">-->
-<!--                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-posts-tab">-->
-<!--                </div>-->
-<!--                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-comments-tab">-->
-<!--                </div>-->
-<!--                <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-liked-posts-tab">-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
+<div>
+    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#buyMemeCoinPopup">Buy
+        MemeCoin
+    </button>
+
+    <div class="modal fade right" id="buyMemeCoinPopup" tabindex="-1" role="dialog"
+         aria-labelledby="makeLoginPreviewLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-full-height modal-right" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="makeLoginPreviewLabel">Buy MemeCoin</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!--                Username-->
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="amount">Amount</span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Enter Amount"
+                               aria-label="Enter Username" aria-describedby="basic-addon2" id="enteredAmount">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" onclick="buyMemeCoin()" class="btn btn-primary">Log In</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#sendGiftPopup">Send Gift
+    </button>
+
+
+    <div class="modal fade right" id="sendGiftPopup" tabindex="-1" role="dialog"
+         aria-labelledby="makeLoginPreviewLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-full-height modal-right" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="makeLoginPreviewLabel">Buy MemeCoin</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!--                Username-->
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="Address">Address of Reciever</span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Enter Address"
+                               aria-label="Enter Address" aria-describedby="basic-addon2" id="enteredAddress">
+                    </div>
+                </div>
+                <!--                Username-->
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="amount">Amount</span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Enter Amount"
+                           aria-label="Enter Amount" aria-describedby="basic-addon2" id="enteredAmount">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" onclick="sendGift()" class="btn btn-primary">Log In</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 <% include partials/script.ejs %>
 <script>
@@ -64,14 +119,27 @@
     url: "profile/user",
     data: user,
     dataType: 'json',
-    success: function (data){changeUser(data)},
+    success: function(data) {changeUser(data)},
   });
+
   function changeUser(data) {
-    console.log(data);
-    console.log(data.username);
-    // document.getElementById("username").innerHTML = data.username;
-    $('username').html("test");// data.username;
-    $('address').innerHTML = data.address;
+    document.getElementById("usernameX").innerHTML = data.username;
+    // $('usernameX').html("data.username");// data.username;
+    document.getElementById("addressX").innerHTML = data.address;
+  }
+</script>
+<script>
+  $.ajax({
+    type: 'POST',
+    url: "profile/token",
+    data: user,
+    dataType: 'json',
+    success: function(data) {changeUser(data)},
+  });
+
+  function changeUser(data) {
+    document.getElementById("balance").innerHTML = data;
+    // $('usernameX').html("data.username");// data.username;
   }
 </script>
 </html>

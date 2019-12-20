@@ -3,16 +3,17 @@ const postLogic = require('./../bussinesLogic/postLogic');
 const TokenEconomy = require('./../utilities/TokenEconomy');
 const prisonLogic = require('./../bussinesLogic/prisonLogic');
 const MemeCoin = require('./../utilities/MemeCoin');
-
+const Web3 = require('web3');
+const web3 = new Web3(new Web3.providers.HttpProvider('http://127.0.0.1:4433'));
 let username = "test1";
-let address = "0x6d67283f2A381416Ab76d78260Fc6AADC61DB918";
+let address = "0x2259e7597838b6Cc60dEe6a752Ee18eed94e320a";
 let password = "password";
 let title = "testTitle";
 let content = "testContent";
 let type = "text";
-
+async function test (){console.log(await web3.eth.getAccounts());}
 let username2 = "test2";
-let address2 = "0x6bD436D36e0046Ec23c54126A6503d9a75968eCB";
+let address2 = "0x23E2228EAc7Bc41Dc39579a56794a3E5122dD4eC";
 let password2 = "password";
 
 async function testReport() {
@@ -40,5 +41,5 @@ async function testReport() {
   // console.log(await MemeCoin.getBalanceOf(address));
   // console.log(await MemeCoin.getBalanceOf(address2));
 }
-
+test();
 testReport();

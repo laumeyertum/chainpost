@@ -48,7 +48,7 @@ async function getLikeWorth() {
 async function setLikeWorth(_worth) {
   try {
     await TokenEconomyContract.methods.setLikeWorth(_worth).
-        send({from: '0xa79824a80dF3234627eba4E47453825fB827C205'});
+        send({from: '0x1FDA0FDAFe6a622Fc58f14C04dE4ED315e011E97'});
   } catch (e) {
     console.log(e);
   }
@@ -73,7 +73,7 @@ async function giveGift(_from, _to, _amount) {
 async function rewardForLikes(_reportedPostId, _originalPoster, _reporter, _confirmer) {
   try {
     await TokenEconomyContract.methods.rewardForLikes(_reportedPostId, _originalPoster, _reporter,
-        _confirmer).send({from: '0xa79824a80dF3234627eba4E47453825fB827C205', gas: 6721900});
+        _confirmer).send({from: '0xC3d95436213abfb97413FCf15E3E7D8af1E3a238', gas: 6721900});
   } catch (e) {
     console.log(e);
   }

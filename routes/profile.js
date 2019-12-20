@@ -5,7 +5,6 @@ const userLogic = require('./../bussinesLogic/userLogic');
 const user = require('./../dataAccess/user');
 const TokenEconomy = require('./../utilities/TokenEconomy');
 const MemeCoin = require('./../utilities/MemeCoin');
-
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   res.render('profile');
@@ -31,13 +30,17 @@ router.post('/userLikes', async function(req, res, next) {
 });
 
 router.post('/buyToken', async function(req, res, next) {
-  await TokenEconomy.buyMemeCoin(req.body.address, req.body.value);
+  let address = user.getAddressByUsername(req.body.username);
+  await TokenEconomy.buyMemeCoin(address, req.body.value);
   res.send();
 });
 
-router.post('/token', async function(res, req, next) {
-  let tokens = MemeCoin.getBalanceOf(req.body.address);
-  res.send(tokens);
+router.post('/token', async function (req, res, next) {
+  let address = await user.getAddressByUsername(req.body.username);
+  console.log(address);
+  let amount = await MemeCoin.getBalanceOf(address);
+  console.log(amount);
+  res.send(amount);
 });
 
 module.exports = router;
