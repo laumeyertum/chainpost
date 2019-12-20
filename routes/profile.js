@@ -30,9 +30,9 @@ router.post('/userLikes', async function(req, res, next) {
 });
 
 router.post('/buyToken', async function(req, res, next) {
-  let address = user.getAddressByUsername(req.body.username);
+  let address = await user.getAddressByUsername(req.body.username);
   await TokenEconomy.buyMemeCoin(address, req.body.value);
-  res.send();
+  res.send(address);
 });
 
 router.post('/token', async function (req, res, next) {

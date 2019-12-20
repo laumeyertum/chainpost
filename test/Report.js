@@ -6,14 +6,14 @@ const MemeCoin = require('./../utilities/MemeCoin');
 const Web3 = require('web3');
 const web3 = new Web3(new Web3.providers.HttpProvider('http://127.0.0.1:4433'));
 let username = "test1";
-let address = "0x2259e7597838b6Cc60dEe6a752Ee18eed94e320a";
+let address = "0xcA6F3BF738c82F16431a805083D1b8818A8981eb";
 let password = "password";
 let title = "testTitle";
 let content = "testContent";
 let type = "text";
 async function test (){console.log(await web3.eth.getAccounts());}
 let username2 = "test2";
-let address2 = "0x23E2228EAc7Bc41Dc39579a56794a3E5122dD4eC";
+let address2 = "0x544977912e9c8eF0064D43f80fb47b6287D7adC9";
 let password2 = "password";
 
 async function testReport() {
@@ -37,9 +37,9 @@ async function testReport() {
   console.log("reported");
   await prisonLogic.addConfiramtion(username2, post2.get("postId"), true);
   console.log("added confirmation");
-  // await prisonLogic.resolveReports();
-  // console.log(await MemeCoin.getBalanceOf(address));
-  // console.log(await MemeCoin.getBalanceOf(address2));
+  await prisonLogic.resolveReports();
+  console.log(await MemeCoin.getBalanceOf(address));
+  console.log(await MemeCoin.getBalanceOf(address2));
 }
 test();
 testReport();

@@ -1,15 +1,15 @@
 {
   "contractName": "Prison",
   "abi": [],
-  "metadata": "{\"compiler\":{\"version\":\"0.5.8+commit.23d335f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/home/leon/Documents/POSTECH/Blockchain and Cryptocurrency/TermProject/chainpost/contracts/Prison.sol\":\"Prison\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/leon/Documents/POSTECH/Blockchain and Cryptocurrency/TermProject/chainpost/contracts/Prison.sol\":{\"keccak256\":\"0x33e791cf819681ccd9e277b7598cdffd5278acf3155f0e1adeb81401c00aee94\",\"urls\":[\"bzzr://bd85a907220d1a7382fcee77721f996e23bde9d70ad691567ba6477b16bd2d1d\"]}},\"version\":1}",
-  "bytecode": "0x6080604052348015600f57600080fd5b50603580601d6000396000f3fe6080604052600080fdfea165627a7a72305820dde5096cdc7c7cacef30ad757ccf4bd1ac393842491e0600fa8a5e5edf93cd840029",
-  "deployedBytecode": "0x6080604052600080fdfea165627a7a72305820dde5096cdc7c7cacef30ad757ccf4bd1ac393842491e0600fa8a5e5edf93cd840029",
-  "sourceMap": "25:648:1:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;25:648:1;;;;;;;",
-  "deployedSourceMap": "25:648:1:-;;;;;",
-  "source": "pragma solidity ^0.5.8;\n\ncontract Prison {\n    mapping (uint => uint) private _reportPool;\n    mapping (uint => address) _reporter;\n    mapping (uint => address[]) private _conformer;\n    mapping (uint => address) _creator;\n\n//    function reportPost(uint postId, address reporter, address poster ) public {\n//        _reporter[postId] = reporter;\n//        _creator[postId] = poster;\n//        delete _conformer[postId];\n//    }\n//\n//    function addConfirmation(uint postId, address conformer){\n//        _conformer[postId].push(conformer);\n//    }\n//\n//    function resolveReport(uint postId, bool type){\n//        if(type){\n//\n//        } else{\n//\n//        }\n//    }\n}\n",
-  "sourcePath": "/home/leon/Documents/POSTECH/Blockchain and Cryptocurrency/TermProject/chainpost/contracts/Prison.sol",
+  "metadata": "{\"compiler\":{\"version\":\"0.5.12+commit.7709ece9\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/C/Users/rutge/Documents/Development/chainpost/contracts/Prison.sol\":\"Prison\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/C/Users/rutge/Documents/Development/chainpost/contracts/Prison.sol\":{\"keccak256\":\"0x2e596d7335849c9394a45079a400269319004c799f74a45a44c4f2795403d3f9\",\"urls\":[\"bzz-raw://0e0fbca2ecdc7126f880495cbe3ce23279f2fad5d58f3624fb8e066351661426\",\"dweb:/ipfs/QmVZkUBUoGKRxj64aexuHXE1xmUZemitub7vPneo2siMmD\"]}},\"version\":1}",
+  "bytecode": "0x6080604052348015600f57600080fd5b50603e80601d6000396000f3fe6080604052600080fdfea265627a7a723158205dedfa00766404478cb5dd057ce8caf6e98ba02dcfa16d0cf7b9b4f98954c44e64736f6c634300050c0032",
+  "deployedBytecode": "0x6080604052600080fdfea265627a7a723158205dedfa00766404478cb5dd057ce8caf6e98ba02dcfa16d0cf7b9b4f98954c44e64736f6c634300050c0032",
+  "sourceMap": "27:671:1:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;27:671:1;;;;;;;",
+  "deployedSourceMap": "27:671:1:-;;;;;",
+  "source": "pragma solidity ^0.5.8;\r\n\r\ncontract Prison {\r\n    mapping (uint => uint) private _reportPool;\r\n    mapping (uint => address) _reporter;\r\n    mapping (uint => address[]) private _conformer;\r\n    mapping (uint => address) _creator;\r\n\r\n//    function reportPost(uint postId, address reporter, address poster ) public {\r\n//        _reporter[postId] = reporter;\r\n//        _creator[postId] = poster;\r\n//        delete _conformer[postId];\r\n//    }\r\n//\r\n//    function addConfirmation(uint postId, address conformer){\r\n//        _conformer[postId].push(conformer);\r\n//    }\r\n//\r\n//    function resolveReport(uint postId, bool type){\r\n//        if(type){\r\n//\r\n//        } else{\r\n//\r\n//        }\r\n//    }\r\n}\r\n",
+  "sourcePath": "C:/Users/rutge/Documents/Development/chainpost/contracts/Prison.sol",
   "ast": {
-    "absolutePath": "/home/leon/Documents/POSTECH/Blockchain and Cryptocurrency/TermProject/chainpost/contracts/Prison.sol",
+    "absolutePath": "/C/Users/rutge/Documents/Development/chainpost/contracts/Prison.sol",
     "exportedSymbols": {
       "Prison": [
         76
@@ -48,7 +48,7 @@
             "name": "_reportPool",
             "nodeType": "VariableDeclaration",
             "scope": 76,
-            "src": "47:42:1",
+            "src": "50:42:1",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -61,14 +61,14 @@
                 "id": 59,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
-                "src": "56:4:1",
+                "src": "59:4:1",
                 "typeDescriptions": {
                   "typeIdentifier": "t_uint256",
                   "typeString": "uint256"
                 }
               },
               "nodeType": "Mapping",
-              "src": "47:22:1",
+              "src": "50:22:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_mapping$_t_uint256_$_t_uint256_$",
                 "typeString": "mapping(uint256 => uint256)"
@@ -77,7 +77,7 @@
                 "id": 60,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
-                "src": "64:4:1",
+                "src": "67:4:1",
                 "typeDescriptions": {
                   "typeIdentifier": "t_uint256",
                   "typeString": "uint256"
@@ -93,7 +93,7 @@
             "name": "_reporter",
             "nodeType": "VariableDeclaration",
             "scope": 76,
-            "src": "95:35:1",
+            "src": "99:35:1",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -106,14 +106,14 @@
                 "id": 63,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
-                "src": "104:4:1",
+                "src": "108:4:1",
                 "typeDescriptions": {
                   "typeIdentifier": "t_uint256",
                   "typeString": "uint256"
                 }
               },
               "nodeType": "Mapping",
-              "src": "95:25:1",
+              "src": "99:25:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_mapping$_t_uint256_$_t_address_$",
                 "typeString": "mapping(uint256 => address)"
@@ -122,7 +122,7 @@
                 "id": 64,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
-                "src": "112:7:1",
+                "src": "116:7:1",
                 "stateMutability": "nonpayable",
                 "typeDescriptions": {
                   "typeIdentifier": "t_address",
@@ -139,7 +139,7 @@
             "name": "_conformer",
             "nodeType": "VariableDeclaration",
             "scope": 76,
-            "src": "136:46:1",
+            "src": "141:46:1",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -152,14 +152,14 @@
                 "id": 67,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
-                "src": "145:4:1",
+                "src": "150:4:1",
                 "typeDescriptions": {
                   "typeIdentifier": "t_uint256",
                   "typeString": "uint256"
                 }
               },
               "nodeType": "Mapping",
-              "src": "136:27:1",
+              "src": "141:27:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_mapping$_t_uint256_$_t_array$_t_address_$dyn_storage_$",
                 "typeString": "mapping(uint256 => address[])"
@@ -169,7 +169,7 @@
                   "id": 68,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
-                  "src": "153:7:1",
+                  "src": "158:7:1",
                   "stateMutability": "nonpayable",
                   "typeDescriptions": {
                     "typeIdentifier": "t_address",
@@ -179,7 +179,7 @@
                 "id": 69,
                 "length": null,
                 "nodeType": "ArrayTypeName",
-                "src": "153:9:1",
+                "src": "158:9:1",
                 "typeDescriptions": {
                   "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
                   "typeString": "address[]"
@@ -195,7 +195,7 @@
             "name": "_creator",
             "nodeType": "VariableDeclaration",
             "scope": 76,
-            "src": "188:34:1",
+            "src": "194:34:1",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -208,14 +208,14 @@
                 "id": 72,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
-                "src": "197:4:1",
+                "src": "203:4:1",
                 "typeDescriptions": {
                   "typeIdentifier": "t_uint256",
                   "typeString": "uint256"
                 }
               },
               "nodeType": "Mapping",
-              "src": "188:25:1",
+              "src": "194:25:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_mapping$_t_uint256_$_t_address_$",
                 "typeString": "mapping(uint256 => address)"
@@ -224,7 +224,7 @@
                 "id": 73,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
-                "src": "205:7:1",
+                "src": "211:7:1",
                 "stateMutability": "nonpayable",
                 "typeDescriptions": {
                   "typeIdentifier": "t_address",
@@ -237,13 +237,13 @@
           }
         ],
         "scope": 77,
-        "src": "25:648:1"
+        "src": "27:671:1"
       }
     ],
-    "src": "0:674:1"
+    "src": "0:700:1"
   },
   "legacyAST": {
-    "absolutePath": "/home/leon/Documents/POSTECH/Blockchain and Cryptocurrency/TermProject/chainpost/contracts/Prison.sol",
+    "absolutePath": "/C/Users/rutge/Documents/Development/chainpost/contracts/Prison.sol",
     "exportedSymbols": {
       "Prison": [
         76
@@ -282,7 +282,7 @@
             "name": "_reportPool",
             "nodeType": "VariableDeclaration",
             "scope": 76,
-            "src": "47:42:1",
+            "src": "50:42:1",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -295,14 +295,14 @@
                 "id": 59,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
-                "src": "56:4:1",
+                "src": "59:4:1",
                 "typeDescriptions": {
                   "typeIdentifier": "t_uint256",
                   "typeString": "uint256"
                 }
               },
               "nodeType": "Mapping",
-              "src": "47:22:1",
+              "src": "50:22:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_mapping$_t_uint256_$_t_uint256_$",
                 "typeString": "mapping(uint256 => uint256)"
@@ -311,7 +311,7 @@
                 "id": 60,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
-                "src": "64:4:1",
+                "src": "67:4:1",
                 "typeDescriptions": {
                   "typeIdentifier": "t_uint256",
                   "typeString": "uint256"
@@ -327,7 +327,7 @@
             "name": "_reporter",
             "nodeType": "VariableDeclaration",
             "scope": 76,
-            "src": "95:35:1",
+            "src": "99:35:1",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -340,14 +340,14 @@
                 "id": 63,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
-                "src": "104:4:1",
+                "src": "108:4:1",
                 "typeDescriptions": {
                   "typeIdentifier": "t_uint256",
                   "typeString": "uint256"
                 }
               },
               "nodeType": "Mapping",
-              "src": "95:25:1",
+              "src": "99:25:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_mapping$_t_uint256_$_t_address_$",
                 "typeString": "mapping(uint256 => address)"
@@ -356,7 +356,7 @@
                 "id": 64,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
-                "src": "112:7:1",
+                "src": "116:7:1",
                 "stateMutability": "nonpayable",
                 "typeDescriptions": {
                   "typeIdentifier": "t_address",
@@ -373,7 +373,7 @@
             "name": "_conformer",
             "nodeType": "VariableDeclaration",
             "scope": 76,
-            "src": "136:46:1",
+            "src": "141:46:1",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -386,14 +386,14 @@
                 "id": 67,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
-                "src": "145:4:1",
+                "src": "150:4:1",
                 "typeDescriptions": {
                   "typeIdentifier": "t_uint256",
                   "typeString": "uint256"
                 }
               },
               "nodeType": "Mapping",
-              "src": "136:27:1",
+              "src": "141:27:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_mapping$_t_uint256_$_t_array$_t_address_$dyn_storage_$",
                 "typeString": "mapping(uint256 => address[])"
@@ -403,7 +403,7 @@
                   "id": 68,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
-                  "src": "153:7:1",
+                  "src": "158:7:1",
                   "stateMutability": "nonpayable",
                   "typeDescriptions": {
                     "typeIdentifier": "t_address",
@@ -413,7 +413,7 @@
                 "id": 69,
                 "length": null,
                 "nodeType": "ArrayTypeName",
-                "src": "153:9:1",
+                "src": "158:9:1",
                 "typeDescriptions": {
                   "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
                   "typeString": "address[]"
@@ -429,7 +429,7 @@
             "name": "_creator",
             "nodeType": "VariableDeclaration",
             "scope": 76,
-            "src": "188:34:1",
+            "src": "194:34:1",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -442,14 +442,14 @@
                 "id": 72,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
-                "src": "197:4:1",
+                "src": "203:4:1",
                 "typeDescriptions": {
                   "typeIdentifier": "t_uint256",
                   "typeString": "uint256"
                 }
               },
               "nodeType": "Mapping",
-              "src": "188:25:1",
+              "src": "194:25:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_mapping$_t_uint256_$_t_address_$",
                 "typeString": "mapping(uint256 => address)"
@@ -458,7 +458,7 @@
                 "id": 73,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
-                "src": "205:7:1",
+                "src": "211:7:1",
                 "stateMutability": "nonpayable",
                 "typeDescriptions": {
                   "typeIdentifier": "t_address",
@@ -471,18 +471,18 @@
           }
         ],
         "scope": 77,
-        "src": "25:648:1"
+        "src": "27:671:1"
       }
     ],
-    "src": "0:674:1"
+    "src": "0:700:1"
   },
   "compiler": {
     "name": "solc",
-    "version": "0.5.8+commit.23d335f2.Emscripten.clang"
+    "version": "0.5.12+commit.7709ece9.Emscripten.clang"
   },
   "networks": {},
-  "schemaVersion": "3.0.17",
-  "updatedAt": "2019-12-19T13:49:05.121Z",
+  "schemaVersion": "3.0.19",
+  "updatedAt": "2019-12-20T03:06:26.984Z",
   "devdoc": {
     "methods": {}
   },

@@ -28,7 +28,7 @@
             <div class="form-group row">
                 <label for="staticBalance" class="col-sm-2 col-form-label">Balance</label>
                 <div class="col-sm-10">
-                    <span id="balance">420</span> Memecoins
+                    <span id="balance"></span> Memecoins
                 </div>
             </div>
         </form>
@@ -56,12 +56,12 @@
                             <span class="input-group-text" id="amount">Amount</span>
                         </div>
                         <input type="text" class="form-control" placeholder="Enter Amount"
-                               aria-label="Enter Username" aria-describedby="basic-addon2" id="enteredAmount">
+                               aria-label="Enter Username" aria-describedby="basic-addon2" id="buyAmount">
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" onclick="buyMemeCoin()" class="btn btn-primary">Log In</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" onclick="buyMemeCoin()" class="btn btn-primary">Buy</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                 </div>
             </div>
         </div>
@@ -126,20 +126,34 @@
     document.getElementById("usernameX").innerHTML = data.username;
     // $('usernameX').html("data.username");// data.username;
     document.getElementById("addressX").innerHTML = data.address;
-  }
-</script>
-<script>
-  $.ajax({
-    type: 'POST',
-    url: "profile/token",
-    data: user,
-    dataType: 'json',
-    success: function(data) {changeUser(data)},
-  });
+      $.ajax({
+          type: 'POST',
+          url: "profile/token",
+          data: user,
+          dataType: 'json',
+          success: function(data) {changeUser(data)},
+      });
 
-  function changeUser(data) {
-    document.getElementById("balance").innerHTML = data;
-    // $('usernameX').html("data.username");// data.username;
+      function changeUser(data) {
+          document.getElementById("balance").innerHTML = data;
+          // $('usernameX').html("data.username");// data.username;
+      }
+  }
+
+  function buyMemeCoin() {
+    let amount = document.getElementById('buyAmount').valueOf().value;
+    let username = sessionStorage.username;
+    let data = {
+        username: username,
+        value : amount
+    }
+      $.ajax({
+          type: 'POST',
+          url: "profile/buyToken",
+          data: data,
+          dataType: 'json',
+          success: function() {console.log("test"); window.location.reload();},
+      });
   }
 </script>
 </html>

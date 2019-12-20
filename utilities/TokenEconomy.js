@@ -27,6 +27,7 @@ async function buyMemeCoin(_address, _value) {
 }
 
 async function giveLike(_from, _to, _postId) {
+  console.log(_from);
   try {
     console.log(_postId);
     await TokenEconomyContract.methods.giveLike(_to, _postId).send({from: _from, gas: 6721900});
@@ -73,7 +74,7 @@ async function giveGift(_from, _to, _amount) {
 async function rewardForLikes(_reportedPostId, _originalPoster, _reporter, _confirmer) {
   try {
     await TokenEconomyContract.methods.rewardForLikes(_reportedPostId, _originalPoster, _reporter,
-        _confirmer).send({from: '0xC3d95436213abfb97413FCf15E3E7D8af1E3a238', gas: 6721900});
+        _confirmer).send({from: '0x8C2384A1c980273A8564Dc5B670f3f6c0CBBFb8a', gas: 6721900});
   } catch (e) {
     console.log(e);
   }

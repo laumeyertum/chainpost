@@ -64,7 +64,7 @@ async function resolveReports() {
     let confirmations = await confirmation.getAllConfirmationsByPostId(reportPostId);
     let confirmerAddress = [];
     for (let j = 0; j < confirmations.length; j++) {
-      confirmerAddress.push(await user.getAddressByUsername(await confirmations[i].get('username')));
+      confirmerAddress.push(await user.getAddressByUsername(await confirmations[j].get('username')));
     }
     confirmer.push(confirmerAddress);
   }
