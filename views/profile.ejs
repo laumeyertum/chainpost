@@ -95,15 +95,16 @@
                 <!--                Username-->
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                        <span class="input-group-text" id="amount">Amount</span>
+                        <span class="input-group-text" id="sendAmount">Amount</span>
                     </div>
                     <input type="text" class="form-control" placeholder="Enter Amount"
                            aria-label="Enter Amount" aria-describedby="basic-addon2" id="enteredAmount">
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="submit" onclick="sendGift()" class="btn btn-primary">Log In</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                <div class="modal-footer">
+                    <button type="submit" onclick="sendGift()" class="btn btn-primary">Send</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                </div>
             </div>
         </div>
     </div>
@@ -131,10 +132,10 @@
           url: "profile/token",
           data: user,
           dataType: 'json',
-          success: function(data) {changeUser(data)},
+          success: function(data) {changeUserT(data)},
       });
 
-      function changeUser(data) {
+      function changeUserT(data) {
           document.getElementById("balance").innerHTML = data;
           // $('usernameX').html("data.username");// data.username;
       }
@@ -150,6 +151,26 @@
       $.ajax({
           type: 'POST',
           url: "profile/buyToken",
+          data: data,
+          dataType: 'json',
+          success: function() {console.log("test"); window.location.reload();},
+      });
+  }
+
+  function sendGift() {
+      let amount = document.getElementById('enteredAmount').valueOf().value;
+      let username = sessionStorage.username;
+      let receiver = document.getElementById('enteredAddress').valueOf().value;
+
+      let data = {
+          username: username,
+          address: receiver,
+          value: amount
+      }
+      console.log(data);
+      $.ajax({
+          type: 'POST',
+          url: "profile/sendGift",
           data: data,
           dataType: 'json',
           success: function() {console.log("test"); window.location.reload();},

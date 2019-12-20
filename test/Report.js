@@ -11,7 +11,6 @@ let password = "password";
 let title = "testTitle";
 let content = "testContent";
 let type = "text";
-async function test (){console.log(await web3.eth.getAccounts());}
 let username2 = "test2";
 let address2 = "0x544977912e9c8eF0064D43f80fb47b6287D7adC9";
 let password2 = "password";
@@ -41,5 +40,8 @@ async function testReport() {
   console.log(await MemeCoin.getBalanceOf(address));
   console.log(await MemeCoin.getBalanceOf(address2));
 }
+async function test(){
+  await prisonLogic.resolveReports();
+}
 test();
-testReport();
+// testReport();

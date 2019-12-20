@@ -31,6 +31,7 @@ router.post('/report', async function(req, res, next){
   let originalPostId = req.body.originalId;
   let repostPostId = req.body.repostId;
   let username = req.body.username;
+  console.log(repostPostId, 'repostId');
   let report  =  await prisonLogic.reportPost(repostPostId,originalPostId,username);
   res.send(report);
 });

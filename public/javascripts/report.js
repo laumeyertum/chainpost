@@ -1,7 +1,7 @@
 function report(buttonobj) {
     let postID = buttonobj.parentElement.parentElement.parentElement.parentElement.parentElement.previousSibling.previousSibling.firstChild.nextSibling.nextSibling.nextSibling.innerHTML;
 
-  console.log(postID);
+  console.log(postID, "postId");
     let proofID = document.getElementById("proofID").value;
     console.log(proofID);
     let username = sessionStorage.getItem("username");

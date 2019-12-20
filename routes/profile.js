@@ -43,4 +43,13 @@ router.post('/token', async function (req, res, next) {
   res.send(amount);
 });
 
+router.post('/sendGift', async function (req, res, next) {
+  let from = await user.getAddressByUsername(req.body.username);
+  console.log(address);
+  let to = req.body.address;
+  let value = req.body.value;
+  await TokenEconomy.giveGift(from, to, value);
+  res.send(from);
+});
+
 module.exports = router;
